@@ -1,4 +1,6 @@
 Mydriase::Application.routes.draw do
+  get "gestion/index"
+
   resources :subscriptions
 
   resources :stages
