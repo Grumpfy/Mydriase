@@ -40,7 +40,11 @@ class SubscriptionsController < ApplicationController
   # POST /subscriptions
   # POST /subscriptions.json
   def create
-    @subscription = Subscription.new(params[:subscription])
+    # @subscription = Subscription.new(params[:subscription])
+    @subscription = Subscription.new(:stage_id => current_stage.id,
+                                     :user_id => params[:subscription][:user_id],
+                                     :payed => params[:subscription][:payed])
+    
 
     respond_to do |format|
       if @subscription.save
