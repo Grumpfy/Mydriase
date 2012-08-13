@@ -5,8 +5,6 @@ Mydriase::Application.routes.draw do
 
   get "gestion/index"
 
-  resources :subscriptions
-
   resources :stages
 
   # The priority is based upon order of creation:
