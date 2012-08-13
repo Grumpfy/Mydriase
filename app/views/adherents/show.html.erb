@@ -45,6 +45,9 @@
   <%= @adherent.remarques %>
 </p>
 
+<p>
+<%= link_to 'Inscription', new_inscription_path(adherent_id: @adherent.id) %>
+</p>
 
 <%= link_to 'Edit', edit_adherent_path(@adherent) %> |
 <%= link_to 'Back', adherents_path %>

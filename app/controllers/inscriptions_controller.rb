@@ -26,6 +26,9 @@ class InscriptionsController < ApplicationController
   def new
     @inscription = Inscription.new
     @inscription.stage_id = current_stage.id
+    if params[:adherent_id]
+      @inscription.adherent_id = params[:adherent_id]
+    end
 
     respond_to do |format|
       format.html # new.html.erb
