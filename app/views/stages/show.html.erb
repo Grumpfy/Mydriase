@@ -21,7 +21,8 @@
 		<% @stage.ateliers.each do |atelier| %>
 		<li><%= atelier.title %></li>
 		<% end %>
-		<li><%= link_to 'Ajouter un atelier', new_atelier_path(stage_id: @stage.id) %></li>
+		<li><%= link_to 'Ajouter un atelier', new_atelier_path(stage_id: @stage.id) %></li> 
+		<!-- <li><%= button_to 'Ajouter un atelier', new_atelier_path %></li> -->
 	</ul>
 </p>
 

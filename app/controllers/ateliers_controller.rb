@@ -25,6 +25,9 @@ class AteliersController < ApplicationController
   # GET /ateliers/new.json
   def new
     @atelier = Atelier.new
+    if params[:stage_id]
+      @atelier.stage_id = params[:stage_id]
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +47,7 @@ class AteliersController < ApplicationController
 
     respond_to do |format|
       if @atelier.save
-        format.html { redirect_to @atelier, notice: 'Atelier was successfully created.' }
+        format.html { redirect_to @atelier.stage, notice: 'Atelier was successfully created.' }
         format.json { render json: @atelier, status: :created, location: @atelier }
       else
         format.html { render action: "new" }
