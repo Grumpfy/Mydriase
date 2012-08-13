@@ -1,31 +1,28 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Title:</b>
+  <b>Titre:</b>
   <%= @stage.title %>
 </p>
 
 <p>
-  <b>Start:</b>
+  <b>Debut:</b>
   <%= @stage.start %>
 </p>
 
 <p>
-  <b>End:</b>
+  <b>Fin:</b>
   <%= @stage.end %>
 </p>
 
 <p>
   <b>Ateliers:</b>
-  <% @stage.ateliers.each do |atelier| %>
 	<ul>
+		<% @stage.ateliers.each do |atelier| %>
 		<li><%= atelier.title %></li>
+		<% end %>
+		<li><%= link_to 'Ajouter un atelier', new_atelier_path(stage_id: @stage.id) %></li>
 	</ul>
-	<% end %>
-</p>
-
-<p>
-	<%= link_to 'Ajouter un atelier', new_atelier_path(stage_id: @stage.id) %>
 </p>
 
 <%= link_to 'Edit', edit_stage_path(@stage) %> |
