@@ -2,17 +2,17 @@
 
 <p>
   <b>Adherent:</b>
-  <%= @inscription.adherent_id %>
+  <%= "#{@inscription.adherent.nom} #{@inscription.adherent.prenom}" %>
 </p>
 
 <p>
   <b>Stage:</b>
-  <%= @inscription.stage_id %>
+  <%= @inscription.stage.title %>
 </p>
 
 <p>
-  <b>Attelier:</b>
-  <%= @inscription.attelier_id %>
+  <b>Atelier:</b>
+  <%= @inscription.atelier.title %>
 </p>
 
 <p>

@@ -18,7 +18,7 @@ class InscriptionsControllerTest < ActionController::TestCase
 
   test "should create inscription" do
     assert_difference('Inscription.count') do
-      post :create, inscription: { adherent_id: @inscription.adherent_id, attelier_id: @inscription.attelier_id, remarques: @inscription.remarques, stage_id: @inscription.stage_id }
+      post :create, inscription: { adherent_id: @inscription.adherent_id, atelier_id: @inscription.atelier_id, remarques: @inscription.remarques, stage_id: @inscription.stage_id }
     end
 
     assert_redirected_to inscription_path(assigns(:inscription))
@@ -35,7 +35,7 @@ class InscriptionsControllerTest < ActionController::TestCase
   end
 
   test "should update inscription" do
-    put :update, id: @inscription, inscription: { adherent_id: @inscription.adherent_id, attelier_id: @inscription.attelier_id, remarques: @inscription.remarques, stage_id: @inscription.stage_id }
+    put :update, id: @inscription, inscription: { adherent_id: @inscription.adherent_id, atelier_id: @inscription.atelier_id, remarques: @inscription.remarques, stage_id: @inscription.stage_id }
     assert_redirected_to inscription_path(assigns(:inscription))
   end
 

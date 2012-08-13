@@ -3,11 +3,11 @@
 one:
   adherent_id: 1
   stage_id: 1
-  attelier_id: 1
+  atelier_id: 1
   remarques: MyText
 
 two:
   adherent_id: 1
   stage_id: 1
-  attelier_id: 1
+  atelier_id: 1
   remarques: MyText

@@ -3,7 +3,7 @@ class CreateInscriptions < ActiveRecord::Migration
     create_table :inscriptions do |t|
       t.integer :adherent_id
       t.integer :stage_id
-      t.integer :attelier_id
+      t.integer :atelier_id
       t.text :remarques
 
       t.timestamps

@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(:version => 20120813135526) do
   create_table "inscriptions", :force => true do |t|
     t.integer  "adherent_id"
     t.integer  "stage_id"
-    t.integer  "attelier_id"
+    t.integer  "atelier_id"
     t.text     "remarques"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false

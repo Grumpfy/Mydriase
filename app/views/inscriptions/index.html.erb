@@ -4,7 +4,7 @@
   <tr>
     <th>Adherent</th>
     <th>Stage</th>
-    <th>Attelier</th>
+    <th>Atelier</th>
     <th>Remarques</th>
     <th></th>
     <th></th>
@@ -13,9 +13,9 @@
 
 <% @inscriptions.each do |inscription| %>
   <tr>
-    <td><%= inscription.adherent_id %></td>
-    <td><%= inscription.stage_id %></td>
-    <td><%= inscription.attelier_id %></td>
+    <td><%= "#{inscription.adherent.nom} #{inscription.adherent.prenom}" %></td>
+    <td><%= inscription.stage.title %></td>
+    <td><%= inscription.atelier.title %></td>
     <td><%= inscription.remarques %></td>
     <td><%= link_to 'Show', inscription %></td>
     <td><%= link_to 'Edit', edit_inscription_path(inscription) %></td>

@@ -25,6 +25,7 @@ class InscriptionsController < ApplicationController
   # GET /inscriptions/new.json
   def new
     @inscription = Inscription.new
+    @inscription.stage_id = current_stage.id
 
     respond_to do |format|
       format.html # new.html.erb

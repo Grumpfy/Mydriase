@@ -13,15 +13,15 @@
 
   <div class="field">
     <%= f.label :adherent_id %><br />
-    <%= f.number_field :adherent_id %>
+		<%= f.select :adherent_id, Adherent.order(:nom).collect {|a| [ "#{a.nom} #{a.prenom}", a.id ] } %>
   </div>
   <div class="field">
     <%= f.label :stage_id %><br />
-    <%= f.number_field :stage_id %>
+		<%= f.select :stage_id, Stage.order("start DESC").collect {|s| [ s.title, s.id ] } %>
   </div>
   <div class="field">
-    <%= f.label :attelier_id %><br />
-    <%= f.number_field :attelier_id %>
+    <%= f.label :atelier_id %><br />
+		<%= f.select :atelier_id, Atelier.where("stage_id = #{@inscription.stage_id}").collect {|s| [ s.title, s.id ] } %>
   </div>
   <div class="field">
     <%= f.label :remarques %><br />
