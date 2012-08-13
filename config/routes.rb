@@ -1,4 +1,6 @@
 Mydriase::Application.routes.draw do
+  resources :adherents
+
   resources :ateliers
 
   get "gestion/index"
@@ -6,8 +8,6 @@ Mydriase::Application.routes.draw do
   resources :subscriptions
 
   resources :stages
-
-  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

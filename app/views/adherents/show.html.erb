@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nom:</b>
+  <%= @adherent.nom %>
+</p>
+
+<p>
+  <b>Prenom:</b>
+  <%= @adherent.prenom %>
+</p>
+
+<p>
+  <b>Adresse:</b>
+  <%= @adherent.adresse %>
+</p>
+
+<p>
+  <b>Code postal:</b>
+  <%= @adherent.code_postal %>
+</p>
+
+<p>
+  <b>Ville:</b>
+  <%= @adherent.ville %>
+</p>
+
+<p>
+  <b>Tel:</b>
+  <%= @adherent.tel %>
+</p>
+
+<p>
+  <b>Portable:</b>
+  <%= @adherent.portable %>
+</p>
+
+<p>
+  <b>Mail:</b>
+  <%= @adherent.mail %>
+</p>
+
+<p>
+  <b>Remarques:</b>
+  <%= @adherent.remarques %>
+</p>
+
+
+<%= link_to 'Edit', edit_adherent_path(@adherent) %> |
+<%= link_to 'Back', adherents_path %>
