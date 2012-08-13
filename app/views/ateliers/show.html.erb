@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @atelier.title %>
+</p>
+
+<p>
+  <b>Stage:</b>
+  <%= @atelier.stage_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_atelier_path(@atelier) %> |
+<%= link_to 'Back', ateliers_path %>

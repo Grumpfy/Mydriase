@@ -1,4 +1,6 @@
 Mydriase::Application.routes.draw do
+  resources :ateliers
+
   get "gestion/index"
 
   resources :subscriptions
