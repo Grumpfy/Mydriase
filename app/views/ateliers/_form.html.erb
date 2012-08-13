@@ -13,7 +13,7 @@
 
 	<div class="field">
     <%= f.label :stage_id %><br />
-		<%= f.select :stage_id, Stage.all.collect {|p| [ p.title, p.id ] }, { :prompt => "Select a stage" } %>
+		<%= f.select :stage_id, Stage.order("start DESC").collect {|p| [ p.title, p.id ] } %>
   </div>
   <div class="field">
     <%= f.label :title %><br />
