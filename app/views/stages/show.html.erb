@@ -15,6 +15,18 @@
   <%= @stage.end %>
 </p>
 
+<p>
+  <b>Ateliers:</b>
+  <% @stage.ateliers.each do |atelier| %>
+	<ul>
+		<li><%= atelier.title %></li>
+	</ul>
+	<% end %>
+</p>
+
+<p>
+	<%= link_to 'Ajouter un atelier', new_atelier_path(stage_id: @stage.id) %>
+</p>
 
 <%= link_to 'Edit', edit_stage_path(@stage) %> |
 <%= link_to 'Back', stages_path %>

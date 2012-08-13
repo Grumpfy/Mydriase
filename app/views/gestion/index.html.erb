@@ -5,11 +5,12 @@
 <h1><%=@managed_stage.title%></h1>
 <h2><%="#{@managed_stage.start} - #{@managed_stage.end}"%></h2>
 
+<b>Ateliers:</b>
+<% @managed_stage.ateliers.each do |atelier| %>
 <ul>
-	<% 1.times do %>
-  <li>TODO</li>
-	<% end %>
+	<li><%= atelier.title %></li>
 </ul>
+<% end %>
 
 
 
