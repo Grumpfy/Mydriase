@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Adherent:</b>
+  <%= @inscription.adherent_id %>
+</p>
+
+<p>
+  <b>Stage:</b>
+  <%= @inscription.stage_id %>
+</p>
+
+<p>
+  <b>Attelier:</b>
+  <%= @inscription.attelier_id %>
+</p>
+
+<p>
+  <b>Remarques:</b>
+  <%= @inscription.remarques %>
+</p>
+
+
+<%= link_to 'Edit', edit_inscription_path(@inscription) %> |
+<%= link_to 'Back', inscriptions_path %>

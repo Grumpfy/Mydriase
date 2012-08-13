@@ -1,0 +1,33 @@
+<%= form_for(@inscription) do |f| %>
+  <% if @inscription.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@inscription.errors.count, "error") %> prohibited this inscription from being saved:</h2>
+
+      <ul>
+      <% @inscription.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :adherent_id %><br />
+    <%= f.number_field :adherent_id %>
+  </div>
+  <div class="field">
+    <%= f.label :stage_id %><br />
+    <%= f.number_field :stage_id %>
+  </div>
+  <div class="field">
+    <%= f.label :attelier_id %><br />
+    <%= f.number_field :attelier_id %>
+  </div>
+  <div class="field">
+    <%= f.label :remarques %><br />
+    <%= f.text_area :remarques %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

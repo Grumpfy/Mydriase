@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  adherent_id: 1
+  stage_id: 1
+  attelier_id: 1
+  remarques: MyText
+
+two:
+  adherent_id: 1
+  stage_id: 1
+  attelier_id: 1
+  remarques: MyText

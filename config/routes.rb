@@ -1,4 +1,6 @@
 Mydriase::Application.routes.draw do
+  resources :inscriptions
+
   resources :adherents
 
   resources :ateliers
