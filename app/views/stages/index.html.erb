@@ -2,9 +2,9 @@
 
 <table>
   <tr>
-    <th>Title</th>
-    <th>Start</th>
-    <th>End</th>
+    <th>Intitul&eacute;</th>
+    <th>D&eacute;but</th>
+    <th>Fin</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,8 +13,8 @@
 <% @stages.each do |stage| %>
   <tr>
     <td><%= stage.title %></td>
-    <td><%= stage.start %></td>
-    <td><%= stage.end %></td>
+    <td><%= time_tag stage.start %></td>
+    <td><%= time_tag stage.end %></td>
     <td><%= link_to 'Show', stage %></td>
     <td><%= link_to 'Edit', edit_stage_path(stage) %></td>
     <td><%= link_to 'Destroy', stage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
