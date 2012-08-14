@@ -46,21 +46,21 @@
 		<% @adherent.inscriptions.each do |inscription|%>
 		<tr>
 			<td>
-				<ul><li></li></ul>
+				<b>-</b>
 			</td>
 			<td>
-				<%= inscription.stage.title %>
+				<b><%= inscription.stage.title %></b>
 			</td>
-			<% if @managed_stage.end > DateTime.now %>
+			<% if inscription.stage.end > DateTime.now %>
 			<td>
-				<%= link_to "#{inscription.atelier.title}", edit_inscription_path(inscription) %>
+				<%= link_to "atelier #{inscription.atelier.title}", edit_inscription_path(inscription) %>
 			</td>
 			<td>
 				<%= button_to 'cancel', inscription, method: :delete, confirm: "Annuler l'inscription?" %>
 			</td>
 			<% else %>
 			<td>
-				<%= inscription.atelier.title %>
+				<%= "atelier #{inscription.atelier.title}" %>
 			</td>
 			<% end %>				
 		</tr>
@@ -68,7 +68,7 @@
 		<% if @managed_stage and @managed_stage.inscriptions.where(:adherent_id => @adherent.id).empty? and @managed_stage.end > DateTime.now %>	
 		<tr>
 			<td>
-				<ul><li></li></ul>
+				<b>-</b>
 			</td>
 			<td>
 				<%= link_to "Inscription au stage: #{@managed_stage.title}", new_inscription_path(adherent_id: @adherent.id) %>
