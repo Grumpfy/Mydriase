@@ -51,7 +51,7 @@
 		<% @adherent.inscriptions.each do |inscription|%>
 		  <li><%= "#{inscription.stage.title} - #{inscription.atelier.title}"%></li>
 		<% end %>
-		<% if @managed_stage.inscriptions.where(:adherent_id => @adherent.id).empty? %>	
+		<% if @managed_stage and @managed_stage.inscriptions.where(:adherent_id => @adherent.id).empty? %>	
 		  <li><%= link_to "Inscription au stage: #{@managed_stage.title}", new_inscription_path(adherent_id: @adherent.id) %></li>
 	  <% end %>
 	</ul>
