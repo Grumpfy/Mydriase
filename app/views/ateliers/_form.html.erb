@@ -11,10 +11,8 @@
     </div>
   <% end %>
 
-	<div class="field">
-    <%= f.label :stage_id %><br />
-		<%= f.select :stage_id, Stage.order("start DESC").collect {|p| [ p.title, p.id ] } %>
-  </div>
+	<%= f.hidden_field :stage_id%>
+	
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>

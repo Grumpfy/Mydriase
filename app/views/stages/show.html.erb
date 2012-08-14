@@ -1,28 +1,28 @@
+<% if notice %>
 <p id="notice"><%= notice %></p>
+<% end %>
+
+<h1><%= @stage.title %></h1>
 
 <p>
-  <b>Titre:</b>
-  <%= @stage.title %>
-</p>
-
-<p>
-  <b>Debut:</b>
-  <%= @stage.start %>
+  <b>D&eacute;but:</b>
+  <%= time_tag @stage.start %>
 </p>
 
 <p>
   <b>Fin:</b>
-  <%= @stage.end %>
+  <%= time_tag @stage.end %>
 </p>
 
 <p>
   <b>Ateliers:</b>
 	<ul>
 		<% @stage.ateliers.each do |atelier| %>
-		<li><%= atelier.title %></li>
+		<li>
+			<%= atelier.title %>
+		</li>
 		<% end %>
 		<li><%= link_to 'Ajouter un atelier', new_atelier_path(stage_id: @stage.id) %></li> 
-		<!-- <li><%= button_to 'Ajouter un atelier', new_atelier_path %></li> -->
 	</ul>
 </p>
 

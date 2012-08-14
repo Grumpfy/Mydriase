@@ -1,14 +1,8 @@
+<% if notice %>
 <p id="notice"><%= notice %></p>
+<% end %>
 
-<p>
-  <b>Nom:</b>
-  <%= @adherent.nom %>
-</p>
-
-<p>
-  <b>Prenom:</b>
-  <%= @adherent.prenom %>
-</p>
+<h2><%= "#{@adherent.nom} #{@adherent.prenom}" %></h1>
 
 <p>
   <b>Adresse:</b>

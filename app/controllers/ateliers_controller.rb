@@ -25,9 +25,7 @@ class AteliersController < ApplicationController
   # GET /ateliers/new.json
   def new
     @atelier = Atelier.new
-    if params[:stage_id]
-      @atelier.stage_id = params[:stage_id]
-    end
+    @atelier.stage_id = current_stage.id
 
     respond_to do |format|
       format.html # new.html.erb

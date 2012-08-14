@@ -64,7 +64,7 @@ class InscriptionsController < ApplicationController
 
     respond_to do |format|
       if @inscription.update_attributes(params[:inscription])
-        format.html { redirect_to @inscription, notice: 'Inscription was successfully updated.' }
+        format.html { redirect_to @inscription.adherent, notice: 'Inscription was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
