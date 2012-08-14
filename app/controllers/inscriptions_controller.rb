@@ -77,10 +77,11 @@ class InscriptionsController < ApplicationController
   # DELETE /inscriptions/1.json
   def destroy
     @inscription = Inscription.find(params[:id])
+    adherent = @inscription.adherent
     @inscription.destroy
 
     respond_to do |format|
-      format.html { redirect_to inscriptions_url }
+      format.html { redirect_to adherent }
       format.json { head :no_content }
     end
   end

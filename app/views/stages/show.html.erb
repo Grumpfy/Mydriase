@@ -22,7 +22,9 @@
 			<%= atelier.title %>
 		</li>
 		<% end %>
-		<li><%= link_to 'Ajouter un atelier', new_atelier_path(stage_id: @stage.id) %></li> 
+		<% if @stage.end > DateTime.now %>
+		  <li><%= link_to 'Ajouter un atelier', new_atelier_path(stage_id: @stage.id) %></li>
+		<% end %>
 	</ul>
 </p>
 
