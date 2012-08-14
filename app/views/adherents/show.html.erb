@@ -46,7 +46,19 @@
 </p>
 
 <p>
-<%= link_to 'Inscription', new_inscription_path(adherent_id: @adherent.id) %>
+  <b>Inscriptions:</b>
+  <ul>
+		<% @adherent.inscriptions.each do |inscription|%>
+		  <li><%= "#{inscription.stage.title} - #{inscription.atelier.title}"%></li>
+		<% end %>
+		<% if @managed_stage.inscriptions.where(:adherent_id => @adherent.id).empty? %>	
+		  <li><%= link_to "Inscription au stage: #{@managed_stage.title}", new_inscription_path(adherent_id: @adherent.id) %></li>
+	  <% end %>
+	</ul>
+</p>
+
+<p>
+
 </p>
 
 <%= link_to 'Edit', edit_adherent_path(@adherent) %> |

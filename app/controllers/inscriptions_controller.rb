@@ -48,7 +48,7 @@ class InscriptionsController < ApplicationController
 
     respond_to do |format|
       if @inscription.save
-        format.html { redirect_to @inscription, notice: 'Inscription was successfully created.' }
+        format.html { redirect_to @inscription.adherent, notice: 'Inscription was successfully created.' }
         format.json { render json: @inscription, status: :created, location: @inscription }
       else
         format.html { render action: "new" }

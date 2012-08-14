@@ -14,6 +14,7 @@ class AdherentsController < ApplicationController
   # GET /adherents/1.json
   def show
     @adherent = Adherent.find(params[:id])
+    @managed_stage = current_stage
 
     respond_to do |format|
       format.html # show.html.erb
