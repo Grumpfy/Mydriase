@@ -10,7 +10,18 @@
 <b>Ateliers:</b>
 <% @managed_stage.ateliers.each do |atelier| %>
 <ul>
-	<li><%= atelier.title %></li>
+	<li>
+		<%= atelier.title %>
+		<%= @managed_stage.inscriptions.where(:atelier_id => atelier.id).count() %>
+	</li>
+</ul>
+<% end %>
+
+<b>Inscrits: </b><%= @managed_stage.inscriptions.count %>
+
+<% @managed_stage.inscriptions.each do |inscription| %>
+<ul>
+	<li><%= "#{inscription.adherent.nom} #{inscription.adherent.prenom}" %></li>
 </ul>
 <% end %>
 

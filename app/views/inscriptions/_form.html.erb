@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :atelier_id %><br />
-		<%= f.select :atelier_id, Atelier.where("stage_id = #{@inscription.stage_id}").collect {|s| [ s.title, s.id ] } %>
+		<%= f.select :atelier_id, Atelier.where("stage_id = ?", @inscription.stage_id).collect {|s| [ s.title, s.id ] } %>
   </div>
   <div class="field">
     <%= f.label :remarques %><br />
