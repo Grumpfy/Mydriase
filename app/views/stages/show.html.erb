@@ -17,7 +17,7 @@
 <p>
   <b>Ateliers:</b>
 	<ul>
-		<% @stage.ateliers.each do |atelier| %>
+		<% @stage.ateliers.order(:title).each do |atelier| %>
 		<li>
 			<%= atelier.title %>
 		</li>

@@ -41,19 +41,41 @@
 
 <p>
   <b>Inscriptions:</b>
-  <ul>
+
+	<table>
 		<% @adherent.inscriptions.each do |inscription|%>
-		  <li>
-				<%= "#{inscription.stage.title} - #{inscription.atelier.title} "%>
-				<% if @managed_stage.end > DateTime.now %>
+		<tr>
+			<td>
+				<ul><li></li></ul>
+			</td>
+			<td>
+				<%= inscription.stage.title %>
+			</td>
+			<% if @managed_stage.end > DateTime.now %>
+			<td>
+				<%= link_to "#{inscription.atelier.title}", edit_inscription_path(inscription) %>
+			</td>
+			<td>
 				<%= button_to 'cancel', inscription, method: :delete, confirm: "Annuler l'inscription?" %>
-				<% end %>
-			</li>
+			</td>
+			<% else %>
+			<td>
+				<%= inscription.atelier.title %>
+			</td>
+			<% end %>				
+		</tr>
 		<% end %>
 		<% if @managed_stage and @managed_stage.inscriptions.where(:adherent_id => @adherent.id).empty? and @managed_stage.end > DateTime.now %>	
-		  <li><%= link_to "Inscription au stage: #{@managed_stage.title}", new_inscription_path(adherent_id: @adherent.id) %></li>
+		<tr>
+			<td>
+				<ul><li></li></ul>
+			</td>
+			<td>
+				<%= link_to "Inscription au stage: #{@managed_stage.title}", new_inscription_path(adherent_id: @adherent.id) %>
+			</td>
+		</tr>
 	  <% end %>
-	</ul>
+	</table>
 </p>
 
 <p>

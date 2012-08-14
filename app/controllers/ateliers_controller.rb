@@ -2,7 +2,7 @@ class AteliersController < ApplicationController
   # GET /ateliers
   # GET /ateliers.json
   def index
-    @ateliers = Atelier.all
+    @ateliers = Atelier.find(:all, :order => "title")
 
     respond_to do |format|
       format.html # index.html.erb

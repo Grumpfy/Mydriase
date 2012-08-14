@@ -1,32 +1,11 @@
-<h1>Listing adherents</h1>
+<h1>Adh&eacute;rents</h1>
 
 <table>
-  <tr>
-    <th>Nom</th>
-    <th>Prenom</th>
-    <th>Adresse</th>
-    <th>Code postal</th>
-    <th>Ville</th>
-    <th>Tel</th>
-    <th>Portable</th>
-    <th>Mail</th>
-    <th>Remarques</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @adherents.each do |adherent| %>
   <tr>
-    <td><%= adherent.nom %></td>
-    <td><%= adherent.prenom %></td>
-    <td><%= adherent.adresse %></td>
-    <td><%= adherent.code_postal %></td>
+    <td><b><%= "#{adherent.nom} #{adherent.prenom}" %></b></td>
     <td><%= adherent.ville %></td>
-    <td><%= adherent.tel %></td>
-    <td><%= adherent.portable %></td>
-    <td><%= adherent.mail %></td>
-    <td><%= adherent.remarques %></td>
     <td><%= link_to 'Show', adherent %></td>
     <td><%= link_to 'Edit', edit_adherent_path(adherent) %></td>
     <td><%= link_to 'Destroy', adherent, method: :delete, data: { confirm: 'Are you sure?' } %></td>

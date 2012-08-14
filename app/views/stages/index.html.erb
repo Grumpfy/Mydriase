@@ -1,20 +1,11 @@
-<h1>Listing stages</h1>
+<h1>Stages</h1>
 
 <table>
-  <tr>
-    <th>Intitul&eacute;</th>
-    <th>D&eacute;but</th>
-    <th>Fin</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @stages.each do |stage| %>
   <tr>
-    <td><%= stage.title %></td>
-    <td><%= time_tag stage.start %></td>
-    <td><%= time_tag stage.end %></td>
+    <td><b><%= stage.title %></b></td>
+    <td>du <%= time_tag stage.start %></td>
+    <td>au <%= time_tag stage.end %></td>
     <td><%= link_to 'Show', stage %></td>
     <td><%= link_to 'Edit', edit_stage_path(stage) %></td>
     <td><%= link_to 'Destroy', stage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
