@@ -8,7 +8,7 @@
 <h2><%="#{@managed_stage.start} - #{@managed_stage.end}"%></h2>
 
 <b>Ateliers:</b>
-<% @managed_stage.ateliers.each do |atelier| %>
+<% @managed_stage.ateliers.order(:title).each do |atelier| %>
 <ul>
 	<li>
 		<%= atelier.title %>
@@ -19,9 +19,9 @@
 
 <b>Inscrits: </b><%= @managed_stage.inscriptions.count %>
 
-<% @managed_stage.inscriptions.each do |inscription| %>
+<% @managed_stage.inscriptions.joins(:adherent).order("adherents.nom").each do |inscription| %>
 <ul>
-	<li><%= "#{inscription.adherent.nom} #{inscription.adherent.prenom}" %></li>
+	<li><%= "#{inscription.adherent.nom} #{inscription.adherent.prenom} - #{inscription.atelier.title}" %></li>
 </ul>
 <% end %>
 
