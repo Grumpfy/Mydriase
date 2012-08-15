@@ -1,7 +1,7 @@
 class Adherent < ActiveRecord::Base
   attr_accessible :adresse, :code_postal, :mail, :nom, :portable, :prenom, :remarques, :tel, :ville
   validates :nom, :prenom, presence: true
-  has_many :inscriptions, dependent: :destroy
+  has_many :inscriptions
   before_destroy :ensure_not_referenced_by_any_inscription
 
   private
