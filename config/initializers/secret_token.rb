@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Mydriase::Application.config.secret_token = '6c07c8b006f8a2fd47a8b1b92bbc3b4bc042f6272a7048d4be31fa3eb012b77c0b77e3058862585fef37169d6a78cac9cc210a5fb38faba0ead756a378dc5c20'
+Mydriase::Application.config.secret_token = '28f180c1dc6acbcfca9bd6a903b7572c1e2731972d61658d63b637ebe1970736c4db9a58f6c71e0ff6bcdcda07edf5b2a66af63c6e42a4ee464b2ce5893d59b8'
