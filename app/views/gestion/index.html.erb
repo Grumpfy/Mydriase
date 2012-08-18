@@ -8,22 +8,36 @@
 <h2><%= time_tag @managed_stage.start %> - <%= time_tag @managed_stage.end%></h2>
 
 <b>Ateliers:</b>
-<% @managed_stage.ateliers.order(:title).each do |atelier| %>
-<ul>
-	<li>
-		<%= atelier.title %>
-		<%= @managed_stage.inscriptions.where(:atelier_id => atelier.id).count() %>
-	</li>
-</ul>
-<% end %>
+
+<table>
+	<% @managed_stage.ateliers.order(:title).each do |atelier| %>
+  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+		<td>
+			<%= atelier.title %>
+		</td>
+		<td>
+			<%= @managed_stage.inscriptions.where(:atelier_id => atelier.id).count() %>
+		</td>
+	</tr>
+	<% end %>
+</table>
+
+<br />
 
 <b>Inscrits: </b><%= @managed_stage.inscriptions.count %>
 
-<% @managed_stage.inscriptions.joins(:adherent).order("adherents.nom").each do |inscription| %>
-<ul>
-	<li><%= "#{inscription.adherent.nom} #{inscription.adherent.prenom} - #{inscription.atelier.title}" %></li>
-</ul>
-<% end %>
+<table>
+	<% @managed_stage.inscriptions.joins(:adherent).order("adherents.nom").each do |inscription| %>
+  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+		<td>
+			<%= "#{inscription.adherent.nom} #{inscription.adherent.prenom}" %>
+		</td>
+		<td>
+			<%= inscription.atelier.title %>
+		</td>
+	</tr>
+	<% end %>
+</table>
 
 <% end %>
 

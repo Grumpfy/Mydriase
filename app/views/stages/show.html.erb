@@ -16,16 +16,23 @@
 
 <p>
   <b>Ateliers:</b>
-	<ul>
+
+	<table>
 		<% @stage.ateliers.order(:title).each do |atelier| %>
-		<li>
-			<%= atelier.title %>
-		</li>
+		<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+			<td>
+				<%= atelier.title %>
+			</td>
+		</tr>
 		<% end %>
 		<% if @stage.end > DateTime.now %>
-		  <li><%= link_to 'Ajouter un atelier', new_atelier_path(stage_id: @stage.id) %></li>
+		<tr>
+			<td>
+				<%= link_to 'Ajouter un atelier', new_atelier_path(stage_id: @stage.id) %>
+			</td>
+		</tr>
 		<% end %>
-	</ul>
+	</table>
 </p>
 
 <%= link_to 'Edit', edit_stage_path(@stage) %> |
