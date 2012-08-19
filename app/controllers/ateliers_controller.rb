@@ -78,10 +78,11 @@ class AteliersController < ApplicationController
   # DELETE /ateliers/1.json
   def destroy
     @atelier = Atelier.find(params[:id])
+    stage = @atelier.stage
     @atelier.destroy
 
     respond_to do |format|
-      format.html { redirect_to ateliers_url }
+      format.html { redirect_to stage }
       format.json { head :no_content }
     end
   end

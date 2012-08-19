@@ -1,0 +1,13 @@
+<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+	<td>
+		<%= atelier.title %>
+	</td>
+	<td>
+		<%= pluralize(atelier.inscriptions.count, "participant") %>
+	</td>
+	<% if editable %>
+	<td class="list_actions"><%= link_to 'Show', atelier %></td>
+  <td class="list_actions"><%= link_to 'Edit', edit_atelier_path(atelier) %></td>
+  <td class="list_actions"><%= link_to 'Destroy', atelier, method: :delete, data: { confirm: 'Etes vous certain de vouloir effacer cet atelier?' } %></td>	
+	<% end %>
+</tr>

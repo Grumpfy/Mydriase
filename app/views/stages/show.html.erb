@@ -18,16 +18,10 @@
   <b>Ateliers:</b>
 
 	<table>
-		<% @stage.ateliers.order(:title).each do |atelier| %>
-		<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-			<td>
-				<%= atelier.title %>
-			</td>
-		</tr>
-		<% end %>
+		<%= render(partial: "ateliers/atelier", collection: @stage.ateliers, locals: {editable: true}) %>
 		<% if @stage.end > DateTime.now %>
 		<tr>
-			<td>
+			<td colspan="2">
 				<%= link_to 'Ajouter un atelier', new_atelier_path(stage_id: @stage.id) %>
 			</td>
 		</tr>

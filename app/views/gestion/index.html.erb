@@ -10,16 +10,7 @@
 <b>Ateliers:</b>
 
 <table>
-	<% @managed_stage.ateliers.order(:title).each do |atelier| %>
-  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-		<td>
-			<%= atelier.title %>
-		</td>
-		<td>
-			<%= @managed_stage.inscriptions.where(:atelier_id => atelier.id).count() %>
-		</td>
-	</tr>
-	<% end %>
+	<%= render(partial: "ateliers/atelier", collection: @managed_stage.ateliers, locals: {editable: false}) %>
 </table>
 
 <br />
