@@ -11,19 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :admin %><br />
-    <%= f.check_box :admin %>
-  </div>
-  <div class="field">
-    <%= f.label :password_digest %><br />
-    <%= f.text_field :password_digest %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <fieldset>
+		<legend>D&eacute;tails de l'utilisateur</legend>
+
+		<div>
+			<%= f.label :name, 'Nom' %>:
+			<%= f.text_field :name, size: 40 %>
+		</div>
+
+		<div>
+			<%= f.label :password, 'Password' %>:
+			<%= f.password_field :password, size: 40 %>
+		</div>
+
+		<div>
+			<%= f.label :password_confirmation, 'Confirmation' %>:
+			<%= f.password_field :password_confirmation, size: 40 %>
+		</div>
+
+		<div>
+			<%= f.label :admin, 'Administrateur' %><br />
+			<%= f.check_box :admin %>
+		</div>
+
+		<div>
+			<%= f.submit %>
+		</div>
+  </fieldset>
+	
 <% end %>
