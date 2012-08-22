@@ -1,42 +1,48 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="app_form">
 
-      <ul>
+	<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+    <ul>
       <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <li><%= msg %></li>
       <% end %>
-      </ul>
-    </div>
+    </ul>
+  </div>
   <% end %>
 
   <fieldset>
 		<legend>D&eacute;tails de l'utilisateur</legend>
 
-		<div>
-			<%= f.label :name, 'Nom' %>:
-			<%= f.text_field :name, size: 40 %>
-		</div>
+		<table>		
+			<tr>
+				<td><%= f.label :name, 'Nom' %>:</td>
+				<td><%= f.text_field :name, size: 40 %></td>
+			</tr>
 
-		<div>
-			<%= f.label :password, 'Password' %>:
-			<%= f.password_field :password, size: 40 %>
-		</div>
+			<tr>
+				<td><%= f.label :password, 'Password' %>:</td>
+				<td><%= f.password_field :password, size: 40 %></td>
+			</tr>
 
-		<div>
-			<%= f.label :password_confirmation, 'Confirmation' %>:
-			<%= f.password_field :password_confirmation, size: 40 %>
-		</div>
+			<tr>
+				<td><%= f.label :password_confirmation, 'Confirmation' %>:</td>
+				<td><%= f.password_field :password_confirmation, size: 40 %></td>
+			</tr>
 
-		<div>
-			<%= f.label :admin, 'Administrateur' %><br />
-			<%= f.check_box :admin %>
-		</div>
+			<tr>
+				<td><%= f.label :admin, 'Administrateur' %>:</td>
+				<td><%= f.check_box :admin %></td>
+			</tr>
 
-		<div>
-			<%= f.submit %>
-		</div>
+			<tr>
+				<td colspan="2"><%= f.submit %></td>
+			</tr>
+		</table>
   </fieldset>
 	
-<% end %>
+	<% end %>
+
+</div>
