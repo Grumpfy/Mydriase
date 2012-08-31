@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     if user and user.authenticate(params[:password])
       session[:user_id] = user.id
       session[:user_name] = user.name
+      session[:admin] = user.admin
       redirect_to gestion_url
     else
       redirect_to login_url, alert: "Utilisateur ou mot de passe incorrect"
@@ -15,6 +16,8 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    session[:user_name] = nil
+    session[:admin] = nil
     redirect_to gestion_url, notice: "Logged out"
   end
 end
