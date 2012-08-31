@@ -3,6 +3,14 @@ class SessionsController < ApplicationController
   end
 
   def create
+    # first user: register as admin 
+    if User.count == 0
+      first_user = User.new(:admin => true, 
+                            :name => params[:name], 
+                            :password => params[:password], 
+                            :password_confirmation => params[:password])
+      first_user.save
+    end
     user = User.find_by_name(params[:name])
     if user and user.authenticate(params[:password])
       session[:user_id] = user.id
