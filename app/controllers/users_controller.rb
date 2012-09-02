@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :authorize_admin_only
+
   # GET /users
   # GET /users.json
   def index
@@ -80,4 +82,5 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end
