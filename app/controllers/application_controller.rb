@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_filter :authorize
+  before_filter :authorize_admin_only
   protect_from_forgery
   
   private

@@ -1,4 +1,6 @@
 class AteliersController < ApplicationController
+  skip_before_filter :authorize_admin_only, only: [:show, :index]
+
   # GET /ateliers
   # GET /ateliers.json
   def index
@@ -82,7 +84,7 @@ class AteliersController < ApplicationController
     @atelier.destroy
 
     respond_to do |format|
-      format.html { redirect_to stage }
+      format.html { redirect_to stage, alert: @atelier.errors[:base] }
       format.json { head :no_content }
     end
   end

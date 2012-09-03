@@ -1,4 +1,6 @@
 class StagesController < ApplicationController
+  skip_before_filter :authorize_admin_only, only: [:show, :index]
+
   # GET /stages
   # GET /stages.json
   def index
@@ -76,7 +78,7 @@ class StagesController < ApplicationController
     @stage.destroy
 
     respond_to do |format|
-      format.html { redirect_to stages_url }
+      format.html { redirect_to stages_url, alert: @stage.errors[:base] }
       format.json { head :no_content }
     end
   end

@@ -1,11 +1,5 @@
-<% if notice %>
-<p id="notice"><%= notice %></p>
-<% end %>
 
 <div class="app_form">
-  <% if flash[:alert] %>
-  <p id="notice"><%= flash[:alert] %></p>
-  <% end %>
   <%= form_tag do %>
   <fieldset>
     <legend>Log In</legend>

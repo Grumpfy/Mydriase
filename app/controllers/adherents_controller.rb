@@ -1,4 +1,5 @@
 class AdherentsController < ApplicationController
+  skip_before_filter :authorize_admin_only
   # GET /adherents
   # GET /adherents.json
   def index
@@ -77,7 +78,7 @@ class AdherentsController < ApplicationController
     @adherent.destroy
 
     respond_to do |format|
-      format.html { redirect_to adherents_url }
+      format.html { redirect_to adherents_url, alert: @adherent.errors[:base]}
       format.json { head :no_content }
     end
   end

@@ -1,4 +1,6 @@
 class InscriptionsController < ApplicationController
+  skip_before_filter :authorize_admin_only
+
   # GET /inscriptions
   # GET /inscriptions.json
   def index
