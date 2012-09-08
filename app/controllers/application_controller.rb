@@ -2,24 +2,31 @@ class ApplicationController < ActionController::Base
   before_filter :authorize
   before_filter :authorize_admin_only
   protect_from_forgery
-  
+  helper_method :current_user
+
   private
 
   def current_stage
     Stage.find(:all, :order => "start").last
   end
 
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end 
+
   protected
   
   def authorize
     unless User.find_by_id(session[:user_id])
-      redirect_to login_url, notice: "Please log in"
+      session[:user_id] = nil
+      redirect_to login_url, notice: "Connection requise"
     end
   end
 
   def authorize_admin_only
-    unless User.find_by_id(session[:user_id]) and session[:admin] == true
-      redirect_to login_url, notice: "Please log in as administrator"
+    admin_user = User.where("id = ? AND admin = ?", session[:user_id], true).last
+    unless admin_user 
+      redirect_to login_url, notice: "Connection en tant qu'administrateur requise"
     end
   end
 

@@ -20,20 +20,19 @@
     <div id="side">
       <ul>
 				<li><%= link_to 'Home', gestion_path %></li>
-				<% if connected? %>
-				<li><%= link_to 'Stages', stages_path %></li>
-				<li><%= link_to 'Adherents', adherents_path %></li>
-				<% end %>
-				<% if connected? and administrator?%>
-				<li><%= link_to 'Utilisateurs', users_path %></li>
-				<% end %>
-				<% if !connected? %>
-				<li><%= link_to 'Log in', login_path %></li>
+				<% if current_user %>
+				  <li><%= link_to 'Stages', stages_path %></li>
+				  <li><%= link_to 'Adherents', adherents_path %></li>
+				  <% if current_user.admin %>
+				    <li><%= link_to 'Utilisateurs', users_path %></li>
+				  <% end %>
+				<% else %>				
+				  <li><%= link_to 'Log in', login_path %></li>
 				<% end %>
       </ul>
 			
-			<% if connected? %>
-			<%= button_to "Logout #{user_name}", logout_path, method: :delete %>
+			<% if current_user %>
+			<%= button_to "Logout #{current_user.name}", logout_path, method: :delete %>
 			<% end %>
 
     </div>
