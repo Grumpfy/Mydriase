@@ -14,7 +14,9 @@ Mydriase::Application.routes.draw do
 
   resources :ateliers
 
-  get "gestion/index"
+  controller :gestion do
+    get 'overview' => :overview
+  end
 
   resources :stages
 
@@ -69,7 +71,7 @@ Mydriase::Application.routes.draw do
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
 
-  root :to => 'gestion#index', as: 'gestion' 
+  root :to => 'gestion#overview', as: 'gestion' 
 
   # See how all your routes lay out with "rake routes"
 
