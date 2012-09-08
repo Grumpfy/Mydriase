@@ -1,14 +1,19 @@
+<h1><%= @atelier.stage.title %> - <%= @atelier.title %></h1>
+
+<%= link_to 'Edit', edit_atelier_path(@atelier) %> 
 
 <p>
-  <b>Title:</b>
-  <%= @atelier.title %>
+	<b>Inscrits: </b><%= @atelier.stage.inscriptions.count %>
+
+	<table>
+		<% @atelier.stage.inscriptions.joins(:adherent).order("adherents.nom").each do |inscription| %>
+		<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+			<td>
+				<%= "#{inscription.adherent.nom} #{inscription.adherent.prenom}" %>
+			</td>
+		</tr>
+		<% end %>
+	</table>
 </p>
 
-<p>
-  <b>Stage:</b>
-  <%= @atelier.stage.title %>
-</p>
-
-
-<%= link_to 'Edit', edit_atelier_path(@atelier) %> |
 <%= link_to 'Back', @atelier.stage %>

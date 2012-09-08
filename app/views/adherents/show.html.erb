@@ -1,5 +1,4 @@
-<h2><%= "#{@adherent.nom} #{@adherent.prenom}" %></h1>
-
+<h1><%= "#{@adherent.nom} #{@adherent.prenom}" %></h1>
 
 <fieldset>
 	<legend>D&eacute;tails</legend>
@@ -29,6 +28,8 @@
 			<td><%= @adherent.remarques %></td>
 		</tr>
 	</table>
+
+	<%= link_to 'Edit', edit_adherent_path(@adherent) %> 	
 	
 </fieldset>
 
@@ -70,5 +71,4 @@
 
 </p>
 
-<%= link_to 'Edit', edit_adherent_path(@adherent) %> |
 <%= link_to 'Back', adherents_path %>

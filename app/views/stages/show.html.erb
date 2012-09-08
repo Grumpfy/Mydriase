@@ -2,6 +2,8 @@
 <h1><%= @stage.title %></h1>
 <h2><%= time_tag @stage.start %> - <%= time_tag @stage.end%></h2>
 
+<%= link_to 'Edit', edit_stage_path(@stage) %>
+
 <p>
   <b>Ateliers:</b>
 
@@ -17,5 +19,4 @@
 	</table>
 </p>
 
-<%= link_to 'Edit', edit_stage_path(@stage) %> |
 <%= link_to 'Back', stages_path %>
