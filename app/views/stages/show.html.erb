@@ -1,15 +1,6 @@
 
 <h1><%= @stage.title %></h1>
-
-<p>
-  <b>D&eacute;but:</b>
-  <%= time_tag @stage.start %>
-</p>
-
-<p>
-  <b>Fin:</b>
-  <%= time_tag @stage.end %>
-</p>
+<h2><%= time_tag @stage.start %> - <%= time_tag @stage.end%></h2>
 
 <p>
   <b>Ateliers:</b>

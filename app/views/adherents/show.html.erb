@@ -1,39 +1,36 @@
 <h2><%= "#{@adherent.nom} #{@adherent.prenom}" %></h1>
 
-<p>
-  <b>Adresse:</b>
-  <%= @adherent.adresse %>
-</p>
 
-<p>
-  <b>Code postal:</b>
-  <%= @adherent.code_postal %>
-</p>
+<fieldset>
+	<legend>D&eacute;tails</legend>
 
-<p>
-  <b>Ville:</b>
-  <%= @adherent.ville %>
-</p>
-
-<p>
-  <b>Tel:</b>
-  <%= @adherent.tel %>
-</p>
-
-<p>
-  <b>Portable:</b>
-  <%= @adherent.portable %>
-</p>
-
-<p>
-  <b>Mail:</b>
-  <%= @adherent.mail %>
-</p>
-
-<p>
-  <b>Remarques:</b>
-  <%= @adherent.remarques %>
-</p>
+	<table>
+		<tr>
+			<td><b>Adresse:</b></td>
+			<td>
+				<%= @adherent.adresse %></br>
+				<%= "#{@adherent.code_postal} #{@adherent.ville}" %> 
+			</td>
+		</tr>
+		<tr>
+			<td><b>Tel:</b></td>
+			<td><%= @adherent.tel %></td>
+		</tr>
+		<tr>
+			<td><b>Portable:</b></td>
+			<td><%= @adherent.portable %></td>
+		</tr>
+		<tr>
+			<td><b>Mail:</b></td>
+			<td><%= @adherent.mail %></td>
+		</tr>
+		<tr>
+			<td><b>Remarques:</b></td>
+			<td><%= @adherent.remarques %></td>
+		</tr>
+	</table>
+	
+</fieldset>
 
 <p>
   <b>Inscriptions:</b>
