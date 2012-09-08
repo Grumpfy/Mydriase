@@ -27,10 +27,14 @@ class InscriptionsController < ApplicationController
   # GET /inscriptions/new.json
   def new
     @inscription = Inscription.new
-    @inscription.stage_id = current_stage.id
-    if params[:adherent_id]
-      @inscription.adherent_id = params[:adherent_id]
+    
+    if params[:stage_id]
+      @inscription.stage_id = params[:stage_id]
+    else
+      @inscription.stage_id = current_stage.id
     end
+    
+    @inscription.adherent_id = params[:adherent_id]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -50,7 +54,7 @@ class InscriptionsController < ApplicationController
 
     respond_to do |format|
       if @inscription.save
-        format.html { redirect_to @inscription.adherent, notice: 'Inscription was successfully created.' }
+        format.html { redirect_to @inscription.adherent, notice: 'Inscription was successfull.' }
         format.json { render json: @inscription, status: :created, location: @inscription }
       else
         format.html { render action: "new" }

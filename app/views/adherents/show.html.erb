@@ -62,7 +62,7 @@
 		<% if @managed_stage and @managed_stage.inscriptions.where(:adherent_id => @adherent.id).empty? and @managed_stage.end > DateTime.now %>	
 		<tr>
 			<td colspan="2">
-				<%= link_to "Inscription au stage: #{@managed_stage.title}", new_inscription_path(adherent_id: @adherent.id) %>
+				<%= link_to "Inscription au stage: #{@managed_stage.title}", new_inscription_path(adherent_id: @adherent.id, stage_id: @managed_stage.id) %>
 			</td>
 		</tr>
 	  <% end %>
