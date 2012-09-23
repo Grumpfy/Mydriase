@@ -38,7 +38,9 @@
     </div>
     <div id="main">
 			<% flash.each do |key, value| %>
+			<% if not value.empty? %>
 			<p id="notice"><%= value %></p>
+			<% end %>
 			<% end %>
 
       <%= yield %>
