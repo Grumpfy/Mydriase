@@ -1,16 +1,25 @@
-
+<h1>Inscription</h1>
 <h2><%= "#{@inscription.adherent.nom} #{@inscription.adherent.prenom} - #{@inscription.stage.title}" %></h2>
 
-<p>
-  <b>Atelier:</b>
-  <%= @inscription.atelier.title %>
-</p>
+<fieldset>
+	<legend>D&eacute;tails</legend>
 
-<p>
-  <b>Remarques:</b>
-  <%= @inscription.remarques %>
-</p>
-
+	<table>
+		<tr>
+			<td><b>Atelier:</b></td>
+			<td><%= @inscription.atelier.title %></td>
+		</tr>
+		<tr>
+			<td><b>Remarques globales:</b></td>
+			<td><%= @inscription.remarques %></td>
+		</tr>
+		<tr>
+			<td><b>Mineur:</b></td>
+			<td><%= @inscription.minor ? "oui" : "non" %></td>
+		</tr>
+	</table>
+	
+</fieldset>
 
 <%= link_to 'Edit', edit_inscription_path(@inscription) %> |
 <%= link_to 'Back', @inscription.adherent %>

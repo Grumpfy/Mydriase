@@ -1,5 +1,5 @@
 class Inscription < ActiveRecord::Base
-  attr_accessible :adherent_id, :atelier_id, :remarques, :stage_id
+  attr_accessible :adherent_id, :atelier_id, :remarques, :stage_id, :minor
   validates :stage_id, :atelier_id, :adherent_id, presence: true
   validate :stage_and_atelier_match
   belongs_to :stage

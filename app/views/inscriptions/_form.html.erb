@@ -1,28 +1,47 @@
-<%= form_for(@inscription) do |f| %>
+<div class="app_form">
+	
+	<%= form_for(@inscription) do |f| %>
   <% if @inscription.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@inscription.errors.count, "error") %> prohibited this inscription from being saved:</h2>
+  <div id="error_explanation">
+    <h2><%= pluralize(@inscription.errors.count, "error") %> prohibited this inscription from being saved:</h2>
 
-      <ul>
+    <ul>
       <% @inscription.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <li><%= msg %></li>
       <% end %>
-      </ul>
-    </div>
+    </ul>
+  </div>
   <% end %>
 
 	<%= f.hidden_field :adherent_id %>
 	<%= f.hidden_field :stage_id %>
 
-  <div class="field">
-    <%= f.label :atelier_id %><br />
-		<%= f.select :atelier_id, Atelier.where("stage_id = ?", @inscription.stage_id).collect {|s| [ s.title, s.id ] } %>
-  </div>
-  <div class="field">
-    <%= f.label :remarques %><br />
-    <%= f.text_area :remarques %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+
+	<fieldset>
+		<legend>D&eacute;tails de l'inscription</legend>
+
+		<table>		
+			<tr>
+				<td><%= f.label :atelier_id, 'Atelier' %>:</td>
+				<td><%= f.select :atelier_id, Atelier.where("stage_id = ?", @inscription.stage_id).collect {|s| [ s.title, s.id ] } %></td>
+			</tr>
+
+			<tr>
+				<td><%= f.label :remarques, 'Remarques globales' %>:</td>
+				<td><%= f.text_area :remarques %></td>
+			</tr>
+
+			<tr>
+				<td><%= f.label :minor, 'Mineur' %>:</td>
+				<td><%= f.check_box :minor %></td>
+			</tr>
+
+			<tr>
+				<td colspan="2"><%= f.submit %></td>
+			</tr>
+		</table>
+  </fieldset>
+	
+	<% end %>
+
+</div>
