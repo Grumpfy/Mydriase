@@ -5,20 +5,36 @@
 	<legend>D&eacute;tails</legend>
 
 	<table>
+		
 		<tr>
 			<td><b>Atelier:</b></td>
 			<td><%= @inscription.atelier.title %></td>
 		</tr>
+		
 		<% if not @inscription.remarques.strip.empty? %>
 		<tr>
 			<td><b>Remarques globales:</b></td>
-			<td><%= @inscription.remarques %></td>
+			<td><%= simple_format @inscription.remarques %></td>
 		</tr>
 		<% end %>
+
+		<tr>
+			<td><b>Chambre:</b></td>
+			<td><%= @inscription.room %></td>
+		</tr>
+
+		<% if not @inscription.housing_notes.strip.empty? %>
+		<tr>
+			<td><b>Remarques d'h&eacute;bergement:</b></td>
+			<td><%= simple_format @inscription.housing_notes %></td>
+		</tr>
+		<% end %>		
+		
 		<tr>
 			<td><b>Mineur:</b></td>
 			<td><%= @inscription.minor ? "oui" : "non" %></td>
 		</tr>
+		
 	</table>
 	
 </fieldset>
