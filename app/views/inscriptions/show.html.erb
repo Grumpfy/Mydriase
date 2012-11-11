@@ -9,10 +9,12 @@
 			<td><b>Atelier:</b></td>
 			<td><%= @inscription.atelier.title %></td>
 		</tr>
+		<% if not @inscription.remarques.strip.empty? %>
 		<tr>
 			<td><b>Remarques globales:</b></td>
 			<td><%= @inscription.remarques %></td>
 		</tr>
+		<% end %>
 		<tr>
 			<td><b>Mineur:</b></td>
 			<td><%= @inscription.minor ? "oui" : "non" %></td>

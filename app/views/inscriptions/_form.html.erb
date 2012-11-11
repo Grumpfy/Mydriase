@@ -1,10 +1,10 @@
 <div class="app_form">
 	
 	<%= form_for(@inscription) do |f| %>
-  <% if @inscription.errors.any? %>
+
+	<% if @inscription.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@inscription.errors.count, "error") %> prohibited this inscription from being saved:</h2>
-
     <ul>
       <% @inscription.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
@@ -15,7 +15,6 @@
 
 	<%= f.hidden_field :adherent_id %>
 	<%= f.hidden_field :stage_id %>
-
 
 	<fieldset>
 		<legend>D&eacute;tails de l'inscription</legend>
@@ -28,7 +27,7 @@
 
 			<tr>
 				<td><%= f.label :remarques, 'Remarques globales' %>:</td>
-				<td><%= f.text_area :remarques %></td>
+				<td><%= f.text_area :remarques, size: "80x6"  %></td>
 			</tr>
 
 			<tr>
