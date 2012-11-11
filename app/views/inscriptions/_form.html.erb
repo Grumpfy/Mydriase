@@ -24,6 +24,10 @@
 				<td><%= f.label :remarques, 'Remarques globales' %>:</td>
 				<td><%= f.text_area :remarques, size: "80x4"  %></td>
 			</tr>
+
+			<tr>
+				<td colspan=2><hr /></td>
+			</tr>
 			
 			<tr>
 				<td><%= f.label :atelier_id, 'Atelier' %>:</td>
@@ -34,6 +38,24 @@
 				<td><%= f.label :atelier_notes, "Remarques d'atelier" %>:</td>
 				<td><%= f.text_area :atelier_notes, size: "80x4"  %></td>
 			</tr>
+
+			<tr>
+				<td colspan=2><hr /></td>
+			</tr>			
+
+			<tr>
+				<td><%= f.label :vegetarian, 'Vegetarien' %>:</td>
+				<td><%= f.check_box :vegetarian %></td>
+			</tr>
+
+			<tr>
+				<td><%= f.label :food_notes, "Remarques d'alimentation" %>:</td>
+				<td><%= f.text_area :food_notes, size: "80x4"  %></td>
+			</tr>
+
+			<tr>
+				<td colspan=2><hr /></td>
+			</tr>						
 			
 			<tr>
 				<td><%= f.label :room, 'Chambre' %>:</td>
@@ -44,6 +66,10 @@
 				<td><%= f.label :housing_notes, "Remarques d'hebergement" %>:</td>
 				<td><%= f.text_area :housing_notes, size: "80x4"  %></td>
 			</tr>
+
+			<tr>
+				<td colspan=2><hr /></td>
+			</tr>						
 			
 			<tr>
 				<td><%= f.label :minor, 'Mineur' %>:</td>

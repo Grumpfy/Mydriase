@@ -11,6 +11,10 @@
 			<td><b>Remarques globales:</b></td>
 			<td><%= simple_format @inscription.remarques %></td>
 		</tr>
+
+		<tr>
+			<td colspan=2><hr /></td>
+		</tr>						
 		<% end %>
 
 		<tr>
@@ -24,6 +28,26 @@
 			<td><%= simple_format @inscription.atelier_notes %></td>
 		</tr>
 		<% end %>
+
+		<tr>
+			<td colspan=2><hr /></td>
+		</tr>						
+		
+		<tr>
+			<td><b>V&eacute;g&eacute;tarien:</b></td>
+			<td><%= @inscription.vegetarian ? "oui" : "non" %></td>
+		</tr>
+
+		<% if not @inscription.food_notes.strip.empty? %>
+		<tr>
+			<td><b>Remarques d'alimentation:</b></td>
+			<td><%= simple_format @inscription.food_notes %></td>
+		</tr>
+		<% end %>		
+		
+		<tr>
+			<td colspan=2><hr /></td>
+		</tr>						
 		
 		<tr>
 			<td><b>Chambre:</b></td>
@@ -36,6 +60,10 @@
 			<td><%= simple_format @inscription.housing_notes %></td>
 		</tr>
 		<% end %>		
+
+		<tr>
+			<td colspan=2><hr /></td>
+		</tr>						
 		
 		<tr>
 			<td><b>Mineur:</b></td>
