@@ -5,12 +5,7 @@
 	<legend>D&eacute;tails</legend>
 
 	<table>
-		
-		<tr>
-			<td><b>Atelier:</b></td>
-			<td><%= @inscription.atelier.title %></td>
-		</tr>
-		
+				
 		<% if not @inscription.remarques.strip.empty? %>
 		<tr>
 			<td><b>Remarques globales:</b></td>
@@ -18,6 +13,18 @@
 		</tr>
 		<% end %>
 
+		<tr>
+			<td><b>Atelier:</b></td>
+			<td><%= @inscription.atelier.title %></td>
+		</tr>
+
+		<% if not @inscription.atelier_notes.strip.empty? %>
+		<tr>
+			<td><b>Remarques d'atelier:</b></td>
+			<td><%= simple_format @inscription.atelier_notes %></td>
+		</tr>
+		<% end %>
+		
 		<tr>
 			<td><b>Chambre:</b></td>
 			<td><%= @inscription.room %></td>
@@ -36,8 +43,9 @@
 		</tr>
 		
 	</table>
+
+	<%= link_to 'Edit', edit_inscription_path(@inscription) %>
 	
 </fieldset>
-
-<%= link_to 'Edit', edit_inscription_path(@inscription) %> |
+ 
 <%= link_to 'Back', @inscription.adherent %>

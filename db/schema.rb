@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121111150915) do
+ActiveRecord::Schema.define(:version => 20121111161550) do
 
   create_table "adherents", :force => true do |t|
     t.string   "nom"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20121111150915) do
     t.boolean  "minor",         :default => false
     t.string   "room",          :default => ""
     t.text     "housing_notes", :default => ""
+    t.text     "atelier_notes", :default => ""
   end
 
   create_table "stages", :force => true do |t|
