@@ -16,7 +16,7 @@ Mydriase::Application.routes.draw do
 
   controller :gestion do
     get 'overview' => :overview
-    get 'stage' => :stage
+    get 'managed_stage' => :managed_stage
   end
 
   resources :stages

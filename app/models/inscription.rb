@@ -5,6 +5,7 @@ class Inscription < ActiveRecord::Base
   belongs_to :stage
   belongs_to :atelier
   belongs_to :adherent
+  scope :by_name, joins(:adherent).order("adherents.nom") 
 
   private
 

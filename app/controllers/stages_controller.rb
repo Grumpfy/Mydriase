@@ -4,7 +4,7 @@ class StagesController < ApplicationController
   # GET /stages
   # GET /stages.json
   def index
-    @stages = Stage.find(:all, :order => "start")
+    @stages = Stage.all
 
     respond_to do |format|
       format.html # index.html.erb

@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   private
 
   def current_stage
-    Stage.find(:all, :order => "start").last
+    Stage.all.last
   end
 
   def current_user

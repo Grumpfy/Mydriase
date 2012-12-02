@@ -23,7 +23,7 @@
 				<% if current_user %>
 				  <li><%= link_to 'Stages', stages_path %></li>
 				  <li><%= link_to 'Adherents', adherents_path %></li>
-				  <li><%= link_to 'Gestion du stage', stage_path %></li>
+				  <li><%= link_to 'Gestion du stage', managed_stage_path %></li>
 				  <% if current_user.admin %>
 				    <li><%= link_to 'Admin', users_path %></li>
 				  <% end %>

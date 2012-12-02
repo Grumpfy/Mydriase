@@ -6,7 +6,7 @@ class GestionController < ApplicationController
     @managed_stage = current_stage
   end
 
-  def stage  
+  def managed_stage  
     @managed_stage = current_stage
   end
 

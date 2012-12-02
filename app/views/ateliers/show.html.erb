@@ -6,7 +6,7 @@
 	<b>Inscrits: </b><%= @atelier.stage.inscriptions.count %>
 
 	<table>
-		<% @atelier.stage.inscriptions.joins(:adherent).order("adherents.nom").each do |inscription| %>
+		<% @atelier.inscriptions.by_name.each do |inscription| %>
 		<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
 			<td>
 				<%= "#{inscription.adherent.nom} #{inscription.adherent.prenom}" %>

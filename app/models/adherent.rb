@@ -3,6 +3,7 @@ class Adherent < ActiveRecord::Base
   validates :nom, :prenom, presence: true
   has_many :inscriptions
   before_destroy :ensure_not_referenced_by_any_inscription
+  default_scope order(:nom)
 
   private
   

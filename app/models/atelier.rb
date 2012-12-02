@@ -5,6 +5,7 @@ class Atelier < ActiveRecord::Base
   validates :stage_id, :title, presence: true
   validates :title, uniqueness: true
   before_destroy :ensure_not_referenced_by_any_inscription
+  default_scope order(:title)
 
   private
 

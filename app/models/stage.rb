@@ -5,6 +5,7 @@ class Stage < ActiveRecord::Base
   validates :end, :start, :title, presence: true
   validates :title, uniqueness: true
   before_destroy :ensure_not_referenced_by_any_inscription
+  default_scope order(:start)
 
   private
 
