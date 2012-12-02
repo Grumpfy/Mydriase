@@ -47,7 +47,11 @@
 			
 			<% flash.each do |key, value| %>
 			<% if not value.empty? %>
-			<p id="notice"><%= value %></p>
+			  <% if key == :notice %>
+			    <p class="notification notice"><%= value %></p>
+			  <% else %>
+			    <p class="notification alert"><%= value %></p>
+			  <% end %>
 			<% end %>
 			<% end %>
 
