@@ -5,4 +5,9 @@ class GestionController < ApplicationController
   def overview
     @managed_stage = current_stage
   end
+
+  def stage  
+    @managed_stage = current_stage
+  end
+
 end

@@ -1,0 +1,26 @@
+
+<% if @managed_stage %>
+
+<h1><%=@managed_stage.title%></h1>
+<h2><%= time_tag @managed_stage.start %> - <%= time_tag @managed_stage.end%></h2>
+
+<b>Inscrits: </b><%= @managed_stage.inscriptions.count %>
+
+<table>
+	<% @managed_stage.inscriptions.joins(:adherent).order("adherents.nom").each do |inscription| %>
+  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+		<td>
+			<%= link_to "#{inscription.adherent.nom} #{inscription.adherent.prenom}", inscription %>
+		</td>
+		<td>
+			<%= inscription.atelier.title %>
+		</td>
+	</tr>
+	<% end %>
+</table>
+
+<% end %>
+
+
+
+
