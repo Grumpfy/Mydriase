@@ -38,6 +38,13 @@
 
     </div>
     <div id="main">
+			<% if content_for?(:title) %>
+			  <h1><%= yield :title %></h1>
+				<% if content_for?(:subtitle) %>
+			    <h2><%= yield :subtitle %></h2>
+				<% end %>
+			<% end %>
+			
 			<% flash.each do |key, value| %>
 			<% if not value.empty? %>
 			<p id="notice"><%= value %></p>

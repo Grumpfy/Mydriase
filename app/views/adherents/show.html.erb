@@ -1,4 +1,4 @@
-<h1><%= "#{@adherent.nom} #{@adherent.prenom}" %></h1>
+<% content_for :title do "#{@adherent.nom} #{@adherent.prenom}" end %>
 
 <fieldset>
 	<legend>D&eacute;tails</legend>

@@ -1,6 +1,7 @@
-
-<h1><%= @stage.title %></h1>
-<h2><%= time_tag @stage.start %> - <%= time_tag @stage.end%></h2>
+<% content_for :title do "#{@stage.title}" end %>
+<% content_for :subtitle do %>
+  <%= time_tag @stage.start %> - <%= time_tag @stage.end%>
+<% end %>
 
 <%= link_to 'Edit', edit_stage_path(@stage) %>
 

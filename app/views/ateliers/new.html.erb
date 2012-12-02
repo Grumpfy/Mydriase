@@ -1,4 +1,4 @@
-<h1>Nouvel atelier - <%= @atelier.stage.title %></h1>
+<% content_for :title do "Nouvel atelier - #{@atelier.stage.title}" end %>
 
 <%= render 'form' %>
 

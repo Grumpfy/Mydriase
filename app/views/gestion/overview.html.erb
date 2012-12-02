@@ -1,8 +1,9 @@
-
 <% if @managed_stage %>
 
-<h1><%=@managed_stage.title%></h1>
-<h2><%= time_tag @managed_stage.start %> - <%= time_tag @managed_stage.end%></h2>
+<% content_for :title do "#{@managed_stage.title}" end %>
+<% content_for :subtitle do %>
+  <%= time_tag @managed_stage.start %> - <%= time_tag @managed_stage.end%>
+<% end %>
 
 <b>Ateliers:</b>
 

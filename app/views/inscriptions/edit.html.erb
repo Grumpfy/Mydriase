@@ -1,5 +1,7 @@
-<h1>Edition de l'inscription</h1>
-<h2><%= "#{@inscription.adherent.nom} #{@inscription.adherent.prenom} - #{@inscription.stage.title}" %></h2>
+<% content_for :title do "Edition de l'inscription" end %>
+<% content_for :subtitle do %>
+  <%= "#{@inscription.adherent.nom} #{@inscription.adherent.prenom} - #{@inscription.stage.title}" %>
+<% end %>
 
 <%= render 'form' %>
 

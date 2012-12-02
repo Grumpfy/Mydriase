@@ -1,4 +1,4 @@
-<h1><%= @atelier.stage.title %> - <%= @atelier.title %></h1>
+<% content_for :title do "#{@atelier.stage.title} - #{@atelier.title}" end %>
 
 <%= link_to 'Edit', edit_atelier_path(@atelier) %> 
 
