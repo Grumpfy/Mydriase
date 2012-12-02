@@ -1,20 +1,16 @@
-<!-- START:head -->
 <!DOCTYPE html>
 <html>
 <head>
-<!-- START_HIGHLIGHT -->
+	<meta charset="utf-8">
   <title>Mydriase - gestion des stages</title>
-<!-- END_HIGHLIGHT -->
-  <%= stylesheet_link_tag "application" %><!-- <label id="code.slt"/> -->
-  <%= javascript_include_tag "application" %><!-- <label id="code.jlt"/> -->
-  <%= csrf_meta_tag %><!-- <label id="code.csrf"/> -->
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tag %>
 </head>
-<!-- END:head -->
 <body class="<%= controller.controller_name %>">
-<!-- START_HIGHLIGHT -->
   <div id="banner">
     <%= image_tag("logo.png") %>
-    <%= @page_title || "Mydriase - gestion des stages" %><!-- <label id="code.depot.e.title"/> -->
+    <%= @page_title || "Mydriase - gestion des stages" %>
   </div>
   <div id="columns">
     <div id="side">
@@ -35,7 +31,6 @@
 				<% end %>
       </ul>
 			
-
     </div>
     <div id="main">
 			<% if content_for?(:title) %>
@@ -59,6 +54,5 @@
 
     </div>
   </div>
-<!-- END_HIGHLIGHT -->
 </body>
 </html>
