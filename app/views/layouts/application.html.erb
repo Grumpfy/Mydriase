@@ -1,58 +1,58 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-  <title>Mydriase - gestion des stages</title>
-  <%= stylesheet_link_tag "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tag %>
-</head>
-<body class="<%= controller.controller_name %>">
-  <div id="banner">
-    <%= image_tag("logo.png") %>
-    <%= @page_title || "Mydriase - gestion des stages" %>
-  </div>
-  <div id="columns">
-    <div id="side">
-      <ul>
-				<li><%= link_to 'Home', gestion_path %></li>
-				<% if current_user %>
-				  <li><%= link_to 'Stages', stages_path %></li>
-				  <li><%= link_to 'Adherents', adherents_path %></li>
-				  <li><%= link_to 'Gestion du stage', managed_stage_path %></li>
-				  <% if current_user.admin %>
-				    <li><%= link_to 'Admin', users_path %></li>
-				  <% end %>
-				<% else %>				
-				  <li><%= link_to "[Login]", login_path %></li>
+	<head>
+		<meta charset="utf-8">
+		<title>Mydriase - gestion des stages</title>
+		<%= stylesheet_link_tag "application" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tag %>
+	</head>
+	<body class="<%= controller.controller_name %>">
+		<div id="banner">
+			<%= image_tag("logo.png") %>
+			<%= @page_title || "Mydriase - gestion des stages" %>
+		</div>
+		<div id="columns">
+			<div id="side">
+				<ul>
+					<li><%= link_to 'Home', gestion_path %></li>
+					<% if current_user %>
+						<li><%= link_to 'Stages', stages_path %></li>
+						<li><%= link_to 'Adherents', adherents_path %></li>
+						<li><%= link_to 'Gestion du stage', managed_stage_path %></li>
+						<% if current_user.admin %>
+							<li><%= link_to 'Admin', users_path %></li>
+						<% end %>
+					<% else %>				
+						<li><%= link_to "[Login]", login_path %></li>
+					<% end %>
+					<% if current_user %>
+						<li><%= link_to "[Logout] #{current_user.name}", logout_path, method: :delete %></li>
+					<% end %>
+				</ul>
+				
+			</div>
+			<div id="main">
+				<% if content_for?(:title) %>
+					<h1><%= yield :title %></h1>
+					<% if content_for?(:subtitle) %>
+						<h2><%= yield :subtitle %></h2>
+					<% end %>
 				<% end %>
-				<% if current_user %>
-				<li><%= link_to "[Logout] #{current_user.name}", logout_path, method: :delete %></li>
+				
+				<% flash.each do |key, value| %>
+					<% if not value.empty? %>
+						<% if key == :notice %>
+							<p class="notification notice"><%= value %></p>
+						<% else %>
+							<p class="notification alert"><%= value %></p>
+						<% end %>
+					<% end %>
 				<% end %>
-      </ul>
-			
-    </div>
-    <div id="main">
-			<% if content_for?(:title) %>
-			  <h1><%= yield :title %></h1>
-				<% if content_for?(:subtitle) %>
-			    <h2><%= yield :subtitle %></h2>
-				<% end %>
-			<% end %>
-			
-			<% flash.each do |key, value| %>
-			<% if not value.empty? %>
-			  <% if key == :notice %>
-			    <p class="notification notice"><%= value %></p>
-			  <% else %>
-			    <p class="notification alert"><%= value %></p>
-			  <% end %>
-			<% end %>
-			<% end %>
-
-      <%= yield %>
-
-    </div>
-  </div>
-</body>
+				
+				<%= yield %>
+				
+			</div>
+		</div>
+	</body>
 </html>
