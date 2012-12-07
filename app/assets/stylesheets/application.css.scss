@@ -1,4 +1,3 @@
-
 /*
  * This is a manifest file that'll be compiled into application.css, which will
  * include all the files listed below.
@@ -12,63 +11,12 @@
  * file per style scope.
  *
  *= require normalize
+ *= require scaffolds
+ *= require layout
+ *= require navigation
  *= require_self
  *= require_tree .
  */
-
-/* START_HIGHLIGHT */
-#banner {
-		background: #9c9;
-		padding: 30px;
-		border-bottom: 2px solid;
-		font: small-caps 50px/50px "Times New Roman", serif;
-		color: #282;
-		text-align: center;
-
-		img {
-				float: left;
-		}
-}
-
-#notice {
-		color: #000 !important;
-		border: 2px solid red;
-		padding: 1em;
-		margin-bottom: 2em;
-		background-color: #f0f0f0;
-		font: bold smaller sans-serif;
-}
-
-#columns {
-		background: #141;
-
-		#main {
-				margin-left: 17em;
-				padding: 1em;
-				background: white;
-		}
-
-		#side {
-				float: left;
-				padding: 1em 2em;
-				width: 13em;
-				background: #141;
-
-				ul {
-						padding: 0;
-
-						li {
-								list-style: none;
-
-								a {
-										color: #bfb;
-										font-size: small;
-								}
-						}
-				}
-		}
-}
-
 
 table {
     border-collapse: collapse;
@@ -96,7 +44,6 @@ table tr td {
     background:   #eee;
 }
 
-/* END_HIGHLIGHT */
 
 fieldset {
 		background: #efe;

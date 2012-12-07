@@ -1,0 +1,150 @@
+/* HEADER*/
+header#page_header {
+  background: #9c9 bottom right no-repeat;
+  color: #fff;
+  font-size: 0.9em;
+  height: 68px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  padding: 10px 20px;
+
+  a,
+  a:link,
+  a:hover,
+  a:active,
+  a:visited {
+    color:#fef8e7;
+    text-decoration: none;
+  }
+
+  nav#utility {
+    float: right;
+    font-size: 0.8em;
+  }
+
+  #logo {
+    position: absolute;
+    top: 8px;
+  }
+
+}
+
+#tagline {
+  margin-left: 20px;
+}
+
+div.container {
+  overflow: hidden;
+  padding: 0 20px;
+
+}
+
+/* FOOTER */
+footer#page_footer {
+  background-color: #9c9;
+  border-bottom: 10px solid #141;
+  color: #fff;
+  font-size: 0.7em;
+  height: 10px;
+  padding: 10px 10px;
+
+  ul {
+    margin-left: -10px;
+    padding: 0;
+
+    li {
+      border-right: 1px solid #fef8e7;
+      display: inline;
+      margin: 0;
+      &:last-child {
+        border-right: none;
+      }
+
+      a {
+        padding: 5px 10px;
+        &:link,
+        &:hover,
+        &:visited,
+        &.active {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+/* MAIN SECTIONS */
+section#content {
+   float: left;
+	 padding: 50px;
+}
+
+section#sidebar {
+   float: right;
+   margin-right: -20px;
+   width: 300px;
+   background-color: #9c9;
+
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  color: #666;
+  font: {
+    size: 0.8em;
+    weight: normal;
+  }
+  line-height: 1.3em;
+  padding: 10px;
+  a,
+  a:link,
+  a:visited {
+    color: #666;
+    text-decoration: underline;
+  }
+
+  a:hover,
+  a:active {
+    color: #bc471d;
+  }
+
+	
+}
+
+/* OLD LAYOUT
+#columns {
+		background: #141;
+
+		#main {
+				margin-left: 17em;
+				padding: 1em;
+				background: white;
+		}
+
+		#side {
+				float: left;
+				padding: 1em 2em;
+				width: 13em;
+				background: #141;
+
+				ul {
+						padding: 0;
+
+						li {
+								list-style: none;
+
+								a {
+										color: #bfb;
+										font-size: small;
+								}
+						}
+				}
+		}
+}
+*/
+
+/* for image replacement */
+.ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
+

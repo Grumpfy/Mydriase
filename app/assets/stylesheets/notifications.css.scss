@@ -1,4 +1,4 @@
-/* START:base */
+
 .notification {
   background-position: 10px 9px;
   background-repeat: no-repeat;
@@ -10,9 +10,6 @@
   padding: 0.75em 0.75em 0.75em 45px;
 }
 
-/* END:base */
-
-/* START:variations */
 .notification {
   background:{
     position: 10px 9px;
@@ -41,5 +38,3 @@
     }
   }
 }
-
-/* END:variations */
