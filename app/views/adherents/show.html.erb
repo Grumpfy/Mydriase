@@ -1,74 +1,53 @@
 <% content_for :title do "#{@adherent.nom} #{@adherent.prenom}" end %>
 
 <fieldset>
-	<legend>D&eacute;tails</legend>
+  <legend>D&eacute;tails</legend>
 
-	<table>
-		<tr>
-			<td><b>Adresse:</b></td>
-			<td>
-				<%= @adherent.adresse %></br>
-				<%= "#{@adherent.code_postal} #{@adherent.ville}" %> 
-			</td>
-		</tr>
-		<tr>
-			<td><b>Tel:</b></td>
-			<td><%= @adherent.tel %></td>
-		</tr>
-		<tr>
-			<td><b>Portable:</b></td>
-			<td><%= @adherent.portable %></td>
-		</tr>
-		<tr>
-			<td><b>Mail:</b></td>
-			<td><%= @adherent.mail %></td>
-		</tr>
-		<tr>
-			<td><b>Remarques:</b></td>
-			<td><%= simple_format @adherent.remarques %></td>
-		</tr>
-	</table>
+  <table>
+    <tr>
+      <td><b>Adresse:</b></td>
+      <td>
+        <%= @adherent.adresse %></br>
+        <%= "#{@adherent.code_postal} #{@adherent.ville}" %> 
+      </td>
+    </tr>
+    <tr>
+      <td><b>Tel:</b></td>
+      <td><%= @adherent.tel %></td>
+    </tr>
+    <tr>
+      <td><b>Portable:</b></td>
+      <td><%= @adherent.portable %></td>
+    </tr>
+    <tr>
+      <td><b>Mail:</b></td>
+      <td><%= @adherent.mail %></td>
+    </tr>
+    <tr>
+      <td><b>Remarques:</b></td>
+      <td><%= simple_format @adherent.remarques %></td>
+    </tr>
+  </table>
 
-	<%= link_to 'Edit', edit_adherent_path(@adherent) %> 	
-	
+  <%= link_to 'Edit', edit_adherent_path(@adherent) %>  
+  
 </fieldset>
 
 <p>
   <b>Inscriptions:</b>
 
-	<table>
-		<% @adherent.inscriptions.each do |inscription|%>
-		<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-			<td>
-				<b><%= inscription.stage.title %></b>
-			</td>
-			<% if inscription.stage.end > DateTime.now %>
-			<td>
-				<%= link_to "atelier #{inscription.atelier.title}", inscription %>
-			</td>
-			<td>
-				<%= button_to 'cancel', inscription, method: :delete, confirm: "Annuler l'inscription?" %>
-			</td>
-			<% else %>
-			<td>
-				<%= "atelier #{inscription.atelier.title}" %>
-			</td>
-			<td></td>
-			<% end %>				
-		</tr>
-		<% end %>
-		<% if @managed_stage and @managed_stage.inscriptions.where(:adherent_id => @adherent.id).empty? and @managed_stage.end > DateTime.now %>	
-		<tr>
-			<td colspan="2">
-				<%= link_to "Inscription au stage: #{@managed_stage.title}", new_inscription_path(adherent_id: @adherent.id, stage_id: @managed_stage.id) %>
-			</td>
-		</tr>
-	  <% end %>
-	</table>
-</p>
-
-<p>
-
+  <table>
+		<%= render partial: "inscriptions/inscription", collection: @adherent.inscriptions, locals: {mode: :inscription} %>
+		
+    <% if @managed_stage and @managed_stage.inscriptions.where(:adherent_id => @adherent.id).empty? and @managed_stage.end > DateTime.now %>  
+      <tr>
+        <td colspan="2">
+          <%= link_to "Inscription au stage: #{@managed_stage.title}", new_inscription_path(adherent_id: @adherent.id, stage_id: @managed_stage.id) %>
+        </td>
+				<td colspan="3"></td>
+      </tr>
+    <% end %>
+  </table>
 </p>
 
 <%= link_to 'Back', adherents_path %>

@@ -8,7 +8,7 @@
 <b>Ateliers:</b>
 
 <table>
-	<%= render(partial: "ateliers/atelier", collection: @managed_stage.ateliers, locals: {editable: false}) %>
+	<%= render partial: "ateliers/atelier", collection: @managed_stage.ateliers, locals: {editable: false} %>
 </table>
 
 <br />
@@ -16,16 +16,7 @@
 <b>Inscrits: </b><%= @managed_stage.inscriptions.count %>
 
 <table>
-	<% @managed_stage.inscriptions.by_name.each do |inscription| %>
-  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-		<td>
-			<%= "#{inscription.adherent.nom} #{inscription.adherent.prenom}" %>
-		</td>
-		<td>
-			<%= inscription.atelier.title %>
-		</td>
-	</tr>
-	<% end %>
+	<%= render partial: "inscriptions/inscription", collection: @managed_stage.inscriptions.by_name, locals: {mode: :overview} %>
 </table>
 
 <% end %>

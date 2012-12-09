@@ -1,0 +1,43 @@
+<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+	<% if mode == :gestion %>
+		<% # gestion mode %>
+
+		<td>
+			<b>
+				<%= "#{inscription.adherent.nom} #{inscription.adherent.prenom}" %>
+			</b>
+		</td>
+		<td>
+			<%= inscription.atelier.title %>
+		</td>
+		<td class="list_actions"><%= link_to 'Show', inscription %></td>
+		<td class="list_actions"><%= link_to 'Edit', edit_inscription_path(inscription) %></td>
+	<% elsif mode == :overview %>
+		<% # overview mode %>
+		
+		<td>
+			<%= "#{inscription.adherent.nom} #{inscription.adherent.prenom}" %>
+		</td>
+		<td>
+			<%= inscription.atelier.title %>
+		</td>
+	<% else %>
+		<% # inscription mode %>
+		
+    <td>
+      <b><%= inscription.stage.title %></b>
+    </td>
+    <td>
+      <%= "atelier: #{inscription.atelier.title}" %>
+    </td>
+    <% if inscription.stage.end > DateTime.now %>
+      <td class="list_actions"><%= link_to 'Show', inscription %></td>
+      <td class="list_actions"><%= link_to 'Edit', edit_inscription_path(inscription) %></td>
+      <td class="list_actions">
+        <%= link_to 'Cancel', inscription, method: :delete, confirm: "Annuler l'inscription?" %>
+      </td>
+    <% else %>
+      <td colspan="3"></td>
+    <% end %>       		
+	<% end %>
+</tr>
