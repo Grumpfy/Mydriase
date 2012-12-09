@@ -42,6 +42,14 @@
           id: "tagline") %>
     
     <div class="container">
+      <section id="sidebar">
+        <p>
+          Application en cours de d&eacute;veloppement.
+          Pour tout soucis, questions ou suggestions d'am&eacute;lioration contactez moi &agrave; cette adresse:
+          <%= mail_to "grumpfy@gmail.com", "St&eacute;phane Guy".html_safe %>         
+        </p>
+      </section>
+			
       <section id="content">
         <% if content_for?(:title) %>
           <h1><%= yield :title %></h1>
@@ -61,15 +69,7 @@
         <% end %>
         
         <%= yield %>        
-      </section>
-      
-      <section id="sidebar">
-        <p>
-          Application en cours de d&eacute;veloppement.
-          Pour tout soucis, questions ou suggestions d'am&eacute;lioration contactez moi &agrave; cette adresse:
-          <%= mail_to "grumpfy@gmail.com", "St&eacute;phane Guy".html_safe %>         
-        </p>
-      </section>
+      </section>      
     </div> 
     
     <footer id="page_footer">
