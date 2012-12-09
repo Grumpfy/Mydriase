@@ -1,75 +1,79 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Mydriase - gestion des stages</title>
-		<%= stylesheet_link_tag "application" %>
-		<%= javascript_include_tag "application" %>
-		<%= csrf_meta_tag %>
-	</head>
-	<body class="<%= controller.controller_name %>">
+  <head>
+    <meta charset="utf-8">
+    <title>Mydriase - gestion des stages</title>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tag %>
+  </head>
+  <body class="<%= controller.controller_name %>">
 
-		<header id="page_header" role="banner">
-			<nav id="utility">
-				<p>
-					<% if current_user %>
-						<%= link_to "<strong>#{current_user.name}</strong> [Logout]".html_safe, logout_path, method: :delete %>
-					<% else %>
-						<%= link_to "[Login]", login_path %>
-					<% end %>
-				</p>
-			</nav>
+    <header id="page_header" role="banner">
+      <nav id="utility">
+        <p>
+          <% if current_user %>
+            <%= link_to "<strong>#{current_user.name}</strong> [Logout]".html_safe, logout_path, method: :delete %>
+          <% else %>
+            <%= link_to "[Login]", login_path %>
+          <% end %>
+        </p>
+      </nav>
 
-			<%= link_to(image_tag("logo.png", alt: "Mydriase", id: "logo"), gestion_url, title: "Home") %>
-			
-			<nav id="main_nav" role="navigation">
-				<ul>
-					<li><%= link_to 'Home', gestion_path %></li>
-					<% if current_user %>
-						<li><%= link_to 'Stages', stages_path %></li>
-						<li><%= link_to 'Inscriptions', adherents_path %></li>
-						<li><%= link_to 'Gestion du stage', managed_stage_path %></li>
-						<% if current_user.admin %>
-							<li><%= link_to 'Admin', users_path %></li>
-						<% end %>
-					<% end %>
-				</ul>
-			</nav>
-		</header>
+      <%= link_to(image_tag("logo.png", alt: "Mydriase", id: "logo"), gestion_url, title: "Home") %>
+      
+      <nav id="main_nav" role="navigation">
+        <ul>
+          <li><%= link_to 'Home', gestion_path %></li>
+          <% if current_user %>
+            <li><%= link_to 'Stages', stages_path %></li>
+            <li><%= link_to 'Inscriptions', adherents_path %></li>
+            <li><%= link_to 'Gestion du stage', managed_stage_path %></li>
+            <% if current_user.admin %>
+              <li><%= link_to 'Admin', users_path %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
 
-		<div class="container">
-			<section id="content">
-				<% if content_for?(:title) %>
-					<h1><%= yield :title %></h1>
-					<% if content_for?(:subtitle) %>
-						<h2><%= yield :subtitle %></h2>
-					<% end %>
-				<% end %>
-				
-				<% flash.each do |key, value| %>
-					<% if not value.empty? %>
-						<% if key == :notice %>
-							<p class="notification notice"><%= value %></p>
-						<% else %>
-							<p class="notification alert"><%= value %></p>
-						<% end %>
-					<% end %>
-				<% end %>
-				
-				<%= yield %>				
-			</section>
-			
-			<section id="sidebar">
-				<p>
-					Application en cours de d&eacute;veloppement.
-					Pour tout soucis, questions ou suggestions d'am&eacute;lioration contactez moi &agrave; cette adresse:
-					<%= mail_to "grumpfy@gmail.com", "St&eacute;phane Guy".html_safe %>					
-				</p>
-			</section>
-		</div> 
-		
-		<footer id="page_footer">
-			<p>&copy;Mydriase. AllRights Reserved.</p>
-		</footer>
-	</body>
+    <%= image_tag("title.png",
+          alt: "Gestion des stages",
+          id: "tagline") %>
+    
+    <div class="container">
+      <section id="content">
+        <% if content_for?(:title) %>
+          <h1><%= yield :title %></h1>
+          <% if content_for?(:subtitle) %>
+            <h2><%= yield :subtitle %></h2>
+          <% end %>
+        <% end %>
+        
+        <% flash.each do |key, value| %>
+          <% if not value.empty? %>
+            <% if key == :notice %>
+              <p class="notification notice"><%= value %></p>
+            <% else %>
+              <p class="notification alert"><%= value %></p>
+            <% end %>
+          <% end %>
+        <% end %>
+        
+        <%= yield %>        
+      </section>
+      
+      <section id="sidebar">
+        <p>
+          Application en cours de d&eacute;veloppement.
+          Pour tout soucis, questions ou suggestions d'am&eacute;lioration contactez moi &agrave; cette adresse:
+          <%= mail_to "grumpfy@gmail.com", "St&eacute;phane Guy".html_safe %>         
+        </p>
+      </section>
+    </div> 
+    
+    <footer id="page_footer">
+      <p>&copy;Mydriase 2012. All Rights Reserved.</p>
+    </footer>
+  </body>
 </html>

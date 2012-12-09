@@ -36,7 +36,7 @@ header#page_header {
 div.container {
   overflow: hidden;
   padding: 0 20px;
-
+	min-height: 400px;
 }
 
 /* FOOTER */
@@ -48,6 +48,12 @@ footer#page_footer {
   height: 10px;
   padding: 10px 10px;
 
+	p {
+		padding: 0px;
+		border: 0px;
+		margin: 0px;
+	}
+	
   ul {
     margin-left: -10px;
     padding: 0;
