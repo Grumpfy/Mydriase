@@ -1,5 +1,9 @@
 Mydriase::Application.routes.draw do
 
+  resources :operations
+
+  resources :billings
+
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
