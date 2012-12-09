@@ -26,7 +26,11 @@ class InscriptionsController < ApplicationController
   # GET /inscriptions/new
   # GET /inscriptions/new.json
   def new
-    @inscription = Inscription.new
+    @inscription = Inscription.new()
+    # add a billing entry
+    @inscription.billings.build
+    # add an operation entry
+    @inscription.operations.build
     
     if params[:stage_id]
       @inscription.stage_id = params[:stage_id]
