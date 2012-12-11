@@ -3,6 +3,7 @@
   <%= "#{@inscription.adherent.nom} #{@inscription.adherent.prenom} - #{@inscription.stage.title}" %>
 <% end %>
 
-<%= render 'form' %>
+<%= render partial: 'form' , locals: {mode: :create} %>
 
-<%= link_to 'Back', @inscription.adherent %>
+<br>
+<%= link_to 'Back', :back %>

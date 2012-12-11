@@ -1,5 +1,9 @@
-<h1>New billing</h1>
+
+<% content_for :title do "Saisir une facturation".html_safe end %>
+<% content_for :subtitle do %>
+  <%= "#{@billing.inscription.adherent.nom} #{@billing.inscription.adherent.prenom}" %>
+<% end %>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', billings_path %>
+<%= link_to 'Back', @billing.inscription %>

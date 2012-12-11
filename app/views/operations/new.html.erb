@@ -1,5 +1,9 @@
-<h1>New operation</h1>
+
+<% content_for :title do "Saisir un r&egrave;glement".html_safe end %>
+<% content_for :subtitle do %>
+  <%= "#{@operation.inscription.adherent.nom} #{@operation.inscription.adherent.prenom}" %>
+<% end %>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', operations_path %>
+<%= link_to 'Back', @operation.inscription %>

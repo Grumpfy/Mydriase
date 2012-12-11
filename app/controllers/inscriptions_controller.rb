@@ -58,7 +58,9 @@ class InscriptionsController < ApplicationController
 
     respond_to do |format|
       if @inscription.save
-        format.html { redirect_to @inscription.adherent, notice: 'Inscription was successfull.' }
+        format.html { 
+          redirect_to @inscription.adherent, 
+          notice: "Inscription cr&egrave;e avec succ&egrave;s".html_safe }
         format.json { render json: @inscription, status: :created, location: @inscription }
       else
         format.html { render action: "new" }
@@ -74,7 +76,9 @@ class InscriptionsController < ApplicationController
 
     respond_to do |format|
       if @inscription.update_attributes(params[:inscription])
-        format.html { redirect_to @inscription.adherent, notice: 'Inscription was successfully updated.' }
+        format.html { 
+          redirect_to managed_stage_path, 
+          notice: "Inscription mise &agrave; jour avec succ&egrave;s".html_safe }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

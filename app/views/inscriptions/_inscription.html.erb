@@ -31,8 +31,6 @@
       <%= "atelier: #{inscription.atelier.title}" %>
     </td>
     <% if inscription.stage.end > DateTime.now %>
-      <td class="list_actions"><%= link_to 'Show', inscription %></td>
-      <td class="list_actions"><%= link_to 'Edit', edit_inscription_path(inscription) %></td>
       <td class="list_actions">
         <%= link_to 'Cancel', inscription, method: :delete, confirm: "Annuler l'inscription?" %>
       </td>

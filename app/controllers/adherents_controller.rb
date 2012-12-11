@@ -46,7 +46,9 @@ class AdherentsController < ApplicationController
 
     respond_to do |format|
       if @adherent.save
-        format.html { redirect_to @adherent, notice: 'Adherent was successfully created.' }
+        format.html { 
+          redirect_to @adherent, 
+          notice: "Adh&eacute;rent cr&eacute;e avec succ&egrave;s.".html_safe }
         format.json { render json: @adherent, status: :created, location: @adherent }
       else
         format.html { render action: "new" }
@@ -62,7 +64,9 @@ class AdherentsController < ApplicationController
 
     respond_to do |format|
       if @adherent.update_attributes(params[:adherent])
-        format.html { redirect_to @adherent, notice: 'Adherent was successfully updated.' }
+        format.html { 
+          redirect_to @adherent, 
+          notice: "Adh&eacute;rent mis &agrave; jour avec succ&egrave;s.".html_safe }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

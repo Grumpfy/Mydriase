@@ -25,6 +25,7 @@ class OperationsController < ApplicationController
   # GET /operations/new.json
   def new
     @operation = Operation.new
+    @operation.inscription_id = params[:inscription_id]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +45,9 @@ class OperationsController < ApplicationController
 
     respond_to do |format|
       if @operation.save
-        format.html { redirect_to @operation, notice: 'Operation was successfully created.' }
+        format.html { 
+          redirect_to @operation.inscription, 
+          notice: "R&egrave;glement enregistr&eacute; avec succ&egrave;s.".html_safe }
         format.json { render json: @operation, status: :created, location: @operation }
       else
         format.html { render action: "new" }
@@ -60,7 +63,9 @@ class OperationsController < ApplicationController
 
     respond_to do |format|
       if @operation.update_attributes(params[:operation])
-        format.html { redirect_to @operation, notice: 'Operation was successfully updated.' }
+        format.html { 
+          redirect_to @operation.inscription, 
+          notice: "R&egrave;glement modifi&eacute; avec succ&egrave;s.".html_safe }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -73,10 +78,11 @@ class OperationsController < ApplicationController
   # DELETE /operations/1.json
   def destroy
     @operation = Operation.find(params[:id])
+    inscription = @operation.inscription
     @operation.destroy
 
     respond_to do |format|
-      format.html { redirect_to operations_url }
+      format.html { redirect_to inscription }
       format.json { head :no_content }
     end
   end

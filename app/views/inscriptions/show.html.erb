@@ -5,77 +5,128 @@
 
 
 <fieldset>
-	<legend>D&eacute;tails</legend>
+  <legend>D&eacute;tails</legend>
 
-	<table>
-				
-		<% if not @inscription.remarques.strip.empty? %>
-		<tr>
-			<td><b>Remarques globales:</b></td>
-			<td><%= simple_format @inscription.remarques %></td>
-		</tr>
+  <table>
+    
+    <% if not @inscription.remarques.strip.empty? %>
+			<tr>
+				<td><b>Remarques globales:</b></td>
+				<td><%= simple_format @inscription.remarques %></td>
+			</tr>
 
-		<tr>
-			<td colspan=2><hr /></td>
-		</tr>						
-		<% end %>
+			<tr>
+				<td colspan=2><hr /></td>
+			</tr>           
+    <% end %>
 
-		<tr>
-			<td><b>Atelier:</b></td>
-			<td><%= @inscription.atelier.title %></td>
-		</tr>
+    <tr>
+      <td><b>Atelier:</b></td>
+      <td><%= @inscription.atelier.title %></td>
+    </tr>
 
-		<% if not @inscription.atelier_notes.strip.empty? %>
-		<tr>
-			<td><b>Remarques d'atelier:</b></td>
-			<td><%= simple_format @inscription.atelier_notes %></td>
-		</tr>
-		<% end %>
+    <% if not @inscription.atelier_notes.strip.empty? %>
+			<tr>
+				<td><b>Remarques d'atelier:</b></td>
+				<td><%= simple_format @inscription.atelier_notes %></td>
+			</tr>
+    <% end %>
 
-		<tr>
-			<td colspan=2><hr /></td>
-		</tr>						
-		
-		<tr>
-			<td><b>V&eacute;g&eacute;tarien:</b></td>
-			<td><%= @inscription.vegetarian ? "oui" : "non" %></td>
-		</tr>
+    <tr>
+      <td colspan=2><hr /></td>
+    </tr>           
+    
+    <tr>
+      <td><b>V&eacute;g&eacute;tarien:</b></td>
+      <td><%= @inscription.vegetarian ? "oui" : "non" %></td>
+    </tr>
 
-		<% if not @inscription.food_notes.strip.empty? %>
-		<tr>
-			<td><b>Remarques d'alimentation:</b></td>
-			<td><%= simple_format @inscription.food_notes %></td>
-		</tr>
-		<% end %>		
-		
-		<tr>
-			<td colspan=2><hr /></td>
-		</tr>						
-		
-		<tr>
-			<td><b>Chambre:</b></td>
-			<td><%= @inscription.room %></td>
-		</tr>
+    <% if not @inscription.food_notes.strip.empty? %>
+			<tr>
+				<td><b>Remarques d'alimentation:</b></td>
+				<td><%= simple_format @inscription.food_notes %></td>
+			</tr>
+    <% end %>   
+    
+    <tr>
+      <td colspan=2><hr /></td>
+    </tr>           
+    
+    <tr>
+      <td><b>Chambre:</b></td>
+      <td><%= @inscription.room %></td>
+    </tr>
 
-		<% if not @inscription.housing_notes.strip.empty? %>
-		<tr>
-			<td><b>Remarques d'h&eacute;bergement:</b></td>
-			<td><%= simple_format @inscription.housing_notes %></td>
-		</tr>
-		<% end %>		
+    <% if not @inscription.housing_notes.strip.empty? %>
+			<tr>
+				<td><b>Remarques d'h&eacute;bergement:</b></td>
+				<td><%= simple_format @inscription.housing_notes %></td>
+			</tr>
+    <% end %>   
 
-		<tr>
-			<td colspan=2><hr /></td>
-		</tr>						
-		
-		<tr>
-			<td><b>Mineur:</b></td>
-			<td><%= @inscription.minor ? "oui" : "non" %></td>
-		</tr>
-		
-	</table>
+    <tr>
+      <td colspan=2><hr /></td>
+    </tr>           
+    
+    <tr>
+      <td><b>Mineur:</b></td>
+      <td><%= @inscription.minor ? "oui" : "non" %></td>
+    </tr>
+    
+  </table>
 
-	<%= link_to 'Edit', edit_inscription_path(@inscription) %>
-	
+  <%= link_to 'Edit', edit_inscription_path(@inscription) %>
+  
 </fieldset>
 
+<br>
+
+<fieldset>
+	<legend>Compte</legend>
+	<table>
+		<% @inscription.billings.each do |bill| %>
+			<tr>
+				<td><%= bill.description %></td>
+				<td><%= "-#{bill.price}" %></td>
+				<td></td>
+				<td class="list_actions">
+					<%= link_to 'Cancel', bill, method: :delete, data: { confirm: 'Are you sure?' } %>
+				</td>
+			</tr>
+		<% end %>
+
+		<% @inscription.operations.each do |op| %>
+			<tr>
+				<td><%= op.description %></td>
+				<td><%= "+#{op.price}" %></td>
+				<td><%= op.method %></td>
+				<td class="list_actions">
+					<%= link_to 'Cancel', op, method: :delete, data: { confirm: 'Are you sure?' } %>
+				</td>
+			</tr>
+		<% end %>
+		<tr>
+      <td colspan="4"><hr /></td>
+    </tr>           
+		<tr>
+			<td>Solde</td>
+			<td>
+				<% solde = 0 %>
+				<% @inscription.billings.each {|b| solde -= b.price} %>
+				<% @inscription.operations.each {|o| solde += o.price} %>
+				<%= solde %>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<%= link_to 'Nouvelle facturation', new_billing_path(inscription_id: @inscription.id) %>
+			</td>
+			<td colspan="2">
+				<%= link_to "Nouveau r&egrave;glement".html_safe, new_operation_path(inscription_id: @inscription.id) %>
+			</td>
+		</tr>
+	</table>
+</fieldset>
+
+<br>
+<%= link_to 'Back', :back %>

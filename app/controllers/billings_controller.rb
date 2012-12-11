@@ -25,6 +25,7 @@ class BillingsController < ApplicationController
   # GET /billings/new.json
   def new
     @billing = Billing.new
+    @billing.inscription_id = params[:inscription_id]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +45,9 @@ class BillingsController < ApplicationController
 
     respond_to do |format|
       if @billing.save
-        format.html { redirect_to @billing, notice: 'Billing was successfully created.' }
+        format.html { 
+          redirect_to @billing.inscription, 
+          notice: "Facturation enregistr&eacute;e avec succ&egrave;s.".html_safe }
         format.json { render json: @billing, status: :created, location: @billing }
       else
         format.html { render action: "new" }
@@ -60,7 +63,9 @@ class BillingsController < ApplicationController
 
     respond_to do |format|
       if @billing.update_attributes(params[:billing])
-        format.html { redirect_to @billing, notice: 'Billing was successfully updated.' }
+        format.html { 
+          redirect_to @billing.inscription, 
+          notice: "Facturation modifi&eacute;e avec succ&eagrave;s.".html_safe }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -73,10 +78,11 @@ class BillingsController < ApplicationController
   # DELETE /billings/1.json
   def destroy
     @billing = Billing.find(params[:id])
+    inscription = @billing.inscription 
     @billing.destroy
 
     respond_to do |format|
-      format.html { redirect_to billings_url }
+      format.html { redirect_to inscription }
       format.json { head :no_content }
     end
   end
