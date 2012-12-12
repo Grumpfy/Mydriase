@@ -77,7 +77,7 @@ class InscriptionsController < ApplicationController
     respond_to do |format|
       if @inscription.update_attributes(params[:inscription])
         format.html { 
-          redirect_to managed_stage_path, 
+          redirect_to @inscription, 
           notice: "Inscription mise &agrave; jour avec succ&egrave;s".html_safe }
         format.json { head :no_content }
       else
