@@ -6,10 +6,10 @@ class Inscription < ActiveRecord::Base
   belongs_to :atelier
   belongs_to :adherent
   scope :by_name, joins(:adherent).order("adherents.nom") 
-  has_many :billings, dependent: :destroy, inverse_of: :inscription
+  has_many :billings, dependent: :destroy
   accepts_nested_attributes_for :billings
   attr_accessible :billings_attributes
-  has_many :operations, dependent: :destroy, inverse_of: :inscription
+  has_many :operations, dependent: :destroy
   accepts_nested_attributes_for :operations
   attr_accessible :operations_attributes
 

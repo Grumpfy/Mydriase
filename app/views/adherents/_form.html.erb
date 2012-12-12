@@ -18,40 +18,40 @@
 
 		<table>
 			<tr>
-				<td><%= f.label :nom %>:</td>
+				<td><%= f.label :nom, 'Nom:' %></td>
 				<td><%= f.text_field :nom %></td>
 			</tr>
 			<tr>
-				<td><%= f.label :prenom %>:</td>
+				<td><%= f.label :prenom, "Pr&eacute;nom:".html_safe %></td>
 				<td><%= f.text_field :prenom %></td>
 			</tr>
 			<tr>
-				<td><%= f.label :adresse %>:</td>
+				<td><%= f.label :adresse, 'Adresse:' %></td>
 				<td><%= f.text_field :adresse %></td>
 			</tr>
 			<tr>
-				<td><%= f.label :code_postal %>:</td>
-				<td><%= f.number_field :code_postal %></td>
+				<td><%= f.label :code_postal, 'Code postal:' %></td>
+				<td><%= f.text_field :code_postal, size: 5 %></td>
 			</tr>
 			<tr>
-				<td><%= f.label :ville %>:</td>
+				<td><%= f.label :ville, 'Ville:' %></td>
 				<td><%= f.text_field :ville %></td>
 			</tr>
 			<tr>
-				<td><%= f.label :tel %>:</td>
-				<td><%= f.text_field :tel %></td>
+				<td><%= f.label :tel, "T&eacute;l&eacute;phone:".html_safe %></td>
+				<td><%= f.text_field :tel, size: 10 %></td>
 			</tr>
 			<tr>
-				<td><%= f.label :portable %>:</td>
-				<td><%= f.text_field :portable %></td>
+				<td><%= f.label :portable, 'Portable' %></td>
+				<td><%= f.text_field :portable, size: 10 %></td>
 			</tr>
 			<tr>
-				<td><%= f.label :mail %>:</td>
+				<td><%= f.label :mail, 'Mail:' %></td>
 				<td><%= f.text_field :mail %></td>
 			</tr>
 			<tr>
-				<td><%= f.label :remarques %>:</td>
-				<td><%= f.text_area :remarques %></td>
+				<td><%= f.label :remarques, 'Remarques:' %></td>
+				<td><%= f.text_area :remarques, size: "40x5" %></td>
 			</tr>
 			<tr>
 				<td collspan="2"><%= f.submit %></td>
