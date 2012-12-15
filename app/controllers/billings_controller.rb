@@ -1,4 +1,6 @@
 class BillingsController < ApplicationController
+  skip_before_filter :authorize_admin_only
+
   # GET /billings
   # GET /billings.json
   def index

@@ -21,20 +21,9 @@
       </nav>
 
       <%= link_to(image_tag("logo.png", alt: "Mydriase", id: "logo"), gestion_url, title: "Home") %>
-      
-      <nav id="main_nav" role="navigation">
-        <ul>
-          <li><%= link_to 'Home', gestion_path %></li>
-          <% if current_user %>
-            <li><%= link_to 'Stages', stages_path %></li>
-            <li><%= link_to 'Inscriptions', adherents_path %></li>
-            <li><%= link_to 'Gestion du stage', managed_stage_path %></li>
-            <% if current_user.admin %>
-              <li><%= link_to 'Admin', users_path %></li>
-            <% end %>
-          <% end %>
-        </ul>
-      </nav>
+
+			<%= yield :main_navigation %>
+			
     </header>
 
     <%= image_tag("title.png",

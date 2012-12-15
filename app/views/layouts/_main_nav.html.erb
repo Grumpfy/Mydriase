@@ -1,0 +1,15 @@
+<% content_for :main_navigation do %>
+  <nav id="main_nav" role="navigation">
+    <ul>
+			<%= nav_tab 'Home', gestion_path, current: current_tab %>
+      <% if current_user %>
+				<%= nav_tab 'Stages', stages_path, current: current_tab %>
+				<%= nav_tab 'Inscriptions', adherents_path, current: current_tab %>
+				<%= nav_tab 'Gestion du stage', managed_stage_path, current: current_tab %>
+        <% if current_user.admin %>
+					<%= nav_tab 'Admin', users_path, current: current_tab %>
+        <% end %>
+      <% end %>
+    </ul>
+  </nav>	
+<% end %>

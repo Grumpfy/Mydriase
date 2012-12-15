@@ -1,4 +1,6 @@
 class OperationsController < ApplicationController
+  skip_before_filter :authorize_admin_only
+
   # GET /operations
   # GET /operations.json
   def index

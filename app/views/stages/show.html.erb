@@ -1,3 +1,5 @@
+<%= currently_at 'Stages' %>
+
 <% content_for :title do "#{@stage.title}" end %>
 <% content_for :subtitle do %>
   <%= time_tag @stage.start %> - <%= time_tag @stage.end%>
