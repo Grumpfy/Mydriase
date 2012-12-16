@@ -79,6 +79,34 @@
 				<tr>
 					<td colspan=2><hr /></td>
 				</tr>           
+				
+				<tr>
+					<td><%= f.label :conf1, 'Confirmation 1:' %></td>
+					<td><%= f.check_box :conf1 %></td>
+				</tr>
+
+				<tr>
+					<td><%= f.label :conf2, 'Confirmation 2:' %></td>
+					<td><%= f.check_box :conf2 %></td>
+				</tr>
+
+				<tr>
+					<td colspan=2><hr /></td>
+				</tr>           
+				
+				<tr>
+					<td><%= f.label :bill_requested, "Facture demand&eacute;e:".html_safe %></td>
+					<td><%= f.check_box :bill_requested %></td>
+				</tr>
+
+				<tr>
+					<td><%= f.label :bill_delivered, "Facture d&eacute;livr&eacute;e:".html_safe %></td>
+					<td><%= f.check_box :bill_delivered %></td>
+				</tr>
+				
+				<tr>
+					<td colspan=2><hr /></td>
+				</tr>           
 
 				<% if mode == :create %>
 					

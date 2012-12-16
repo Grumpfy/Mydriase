@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121209200902) do
+ActiveRecord::Schema.define(:version => 20121216204730) do
 
   create_table "adherents", :force => true do |t|
     t.string   "nom"
@@ -47,14 +47,18 @@ ActiveRecord::Schema.define(:version => 20121209200902) do
     t.integer  "stage_id"
     t.integer  "atelier_id"
     t.text     "remarques"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
-    t.boolean  "minor",         :default => false
-    t.string   "room",          :default => ""
-    t.text     "housing_notes", :default => ""
-    t.text     "atelier_notes", :default => ""
-    t.boolean  "vegetarian",    :default => false
-    t.text     "food_notes",    :default => ""
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.boolean  "minor",          :default => false
+    t.string   "room",           :default => ""
+    t.text     "housing_notes",  :default => ""
+    t.text     "atelier_notes",  :default => ""
+    t.boolean  "vegetarian",     :default => false
+    t.text     "food_notes",     :default => ""
+    t.boolean  "conf1",          :default => false
+    t.boolean  "conf2",          :default => false
+    t.boolean  "bill_requested", :default => false
+    t.boolean  "bill_delivered", :default => false
   end
 
   create_table "operations", :force => true do |t|

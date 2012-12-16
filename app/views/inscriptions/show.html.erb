@@ -74,7 +74,35 @@
       <td><b>Mineur:</b></td>
       <td><%= @inscription.minor ? "oui" : "non" %></td>
     </tr>
-    
+
+    <tr>
+      <td colspan=2><hr /></td>
+    </tr>           
+		
+    <tr>
+      <td><b>Confirmation 1:</b></td>
+      <td><%= @inscription.conf1 ? "oui" : "non" %></td>
+    </tr>
+
+		<tr>
+      <td><b>Confirmation 2:</b></td>
+      <td><%= @inscription.conf2 ? "oui" : "non" %></td>
+    </tr>
+
+		<tr>
+      <td colspan=2><hr /></td>
+    </tr>           
+
+		<tr>
+      <td><b>Facture demand&eacute;e:</b></td>
+      <td><%= @inscription.bill_requested ? "oui" : "non" %></td>
+    </tr>
+
+    <tr>
+      <td><b>Facture d&eacute;livr&eacute;e:</b></td>
+      <td><%= @inscription.bill_delivered ? "oui" : "non" %></td>
+    </tr>
+		
   </table>
 
   <%= link_to 'Edit', edit_inscription_path(@inscription) %>

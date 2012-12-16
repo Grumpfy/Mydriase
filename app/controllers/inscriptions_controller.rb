@@ -60,7 +60,7 @@ class InscriptionsController < ApplicationController
       if @inscription.save
         format.html { 
           redirect_to @inscription.adherent, 
-          notice: "Inscription cr&egrave;e avec succ&egrave;s".html_safe }
+          notice: "Inscription cr&eacute;e avec succ&egrave;s".html_safe }
         format.json { render json: @inscription, status: :created, location: @inscription }
       else
         format.html { render action: "new" }
