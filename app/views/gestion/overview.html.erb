@@ -2,25 +2,29 @@
 
 <% if @managed_stage %>
 
-<% content_for :title do "#{@managed_stage.title}" end %>
-<% content_for :subtitle do %>
-  <%= time_tag @managed_stage.start %> - <%= time_tag @managed_stage.end%>
-<% end %>
+  <% content_for :title do "#{@managed_stage.title}" end %>
+  <% content_for :subtitle do %>
+    <%= time_tag @managed_stage.start %> - <%= time_tag @managed_stage.end%>
+  <% end %>
 
-<b>Ateliers:</b>
-
-<table>
-	<%= render partial: "ateliers/atelier", collection: @managed_stage.ateliers, locals: {editable: false} %>
-</table>
-
-<br />
-
-<b>Inscrits: </b><%= @managed_stage.inscriptions.count %>
-
-<table>
-	<%= render partial: "inscriptions/inscription", collection: @managed_stage.inscriptions.by_name, locals: {mode: :overview} %>
-</table>
-
+  <br />
+  
+  <% @managed_stage.ateliers.each do |atelier| %>
+    <article class="atelier">
+      <header>
+        <b><%= "#{atelier.title}, #{pluralize(atelier.inscriptions.count, 'inscrit')}:" %></b>
+      </header>
+      <p>
+        <table>
+          <%= render(
+                partial: "inscriptions/inscription",
+                collection: atelier.inscriptions.by_name,
+                locals: {mode: :overview}) %>
+        </table>
+      </p>
+    <article>
+  <% end %>
+  
 <% end %>
 
 
