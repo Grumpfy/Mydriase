@@ -1,0 +1,148 @@
+<fieldset>
+  <legend>D&eacute;tails</legend>
+
+  <table>
+    
+    <% if status.remarque? %>
+			<tr>
+				<td><b>Remarques globales:</b></td>
+				<td><%= simple_format status.remarque %></td>
+			</tr>
+
+			<tr>
+				<td colspan=2><hr /></td>
+			</tr>           
+    <% end %>
+
+    <tr>
+      <td><b>Atelier:</b></td>
+      <td><%= status.atelier_title %></td>
+    </tr>
+
+    <% if status.remarque?(:atelier) %>
+			<tr>
+				<td><b>Remarques d'atelier:</b></td>
+				<td><%= simple_format status.remarque(:atelier) %></td>
+			</tr>
+    <% end %>
+
+    <tr>
+      <td colspan=2><hr /></td>
+    </tr>           
+    
+    <tr>
+      <td><b>V&eacute;g&eacute;tarien:</b></td>
+      <td><%= status.vegetarian ? "oui" : "non" %></td>
+    </tr>
+
+    <% if status.remarque?(:food) %>
+			<tr>
+				<td><b>Remarques d'alimentation:</b></td>
+				<td><%= simple_format status.remarque(:food) %></td>
+			</tr>
+    <% end %>   
+    
+    <tr>
+      <td colspan=2><hr /></td>
+    </tr>           
+    
+    <tr>
+      <td><b>Chambre:</b></td>
+      <td><%= status.room %></td>
+    </tr>
+
+    <% if status.remarque?(:housing) %>
+			<tr>
+				<td><b>Remarques d'h&eacute;bergement:</b></td>
+				<td><%= simple_format status.remarque(:housing) %></td>
+			</tr>
+    <% end %>   
+
+    <tr>
+      <td colspan=2><hr /></td>
+    </tr>           
+    
+    <tr>
+      <td><b>Mineur:</b></td>
+      <td><%= status.minor ? "oui" : "non" %></td>
+    </tr>
+
+    <tr>
+      <td colspan=2><hr /></td>
+    </tr>           
+		
+    <tr>
+      <td><b>Confirmation 1:</b></td>
+      <td><%= status.conf1 ? "oui" : "non" %></td>
+    </tr>
+
+		<tr>
+      <td><b>Confirmation 2:</b></td>
+      <td><%= status.conf2 ? "oui" : "non" %></td>
+    </tr>
+
+		<tr>
+      <td colspan=2><hr /></td>
+    </tr>           
+
+		<tr>
+      <td><b>Facture demand&eacute;e:</b></td>
+      <td><%= status.bill_requested ? "oui" : "non" %></td>
+    </tr>
+
+    <tr>
+      <td><b>Facture d&eacute;livr&eacute;e:</b></td>
+      <td><%= status.bill_delivered ? "oui" : "non" %></td>
+    </tr>
+		
+  </table>
+
+  <%= link_to 'Edit', edit_inscription_path(status.inscription) %>
+  
+</fieldset>
+
+<br>
+
+<fieldset>
+	<legend>Compte</legend>
+	<table>
+		<% status.billings.each do |bill| %>
+			<tr>
+				<td><%= bill.description %></td>
+				<td><%= "-#{bill.price}" %></td>
+				<td></td>
+				<td class="list_actions">
+					<%= link_to 'Cancel', bill, method: :delete, data: { confirm: 'Are you sure?' } %>
+				</td>
+			</tr>
+		<% end %>
+
+		<% status.operations.each do |op| %>
+			<tr>
+				<td><%= op.description %></td>
+				<td><%= "+#{op.price}" %></td>
+				<td><%= op.method %></td>
+				<td class="list_actions">
+					<%= link_to 'Cancel', op, method: :delete, data: { confirm: 'Are you sure?' } %>
+				</td>
+			</tr>
+		<% end %>
+		<tr>
+      <td colspan="4"><hr /></td>
+    </tr>           
+		<tr>
+			<td>Solde</td>
+			<td>
+				<%= status.solde %>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<%= link_to 'Nouvelle facturation', new_billing_path(inscription_id: status.inscription.id) %>
+			</td>
+			<td colspan="2">
+				<%= link_to "Nouveau r&egrave;glement".html_safe, new_operation_path(inscription_id: status.inscription.id) %>
+			</td>
+		</tr>
+	</table>
+</fieldset>
