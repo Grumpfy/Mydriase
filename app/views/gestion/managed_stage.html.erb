@@ -8,12 +8,18 @@
   <% end %>
 
   <b>Inscrits: </b><%= @managed_stage.inscriptions.count %>
+	<br/>
+	<b>Filtres:</b>
+	<%= link_to "aucun", managed_stage_path() %> |
+	<%= link_to "attente confirmation 1", managed_stage_path(:conf_level => 1) %> |
+	<%= link_to "attente confirmation 2", managed_stage_path(:conf_level => 2) %> 
+
 	<br/><br/>
-	<%= table_for_managed_stage(@managed_stage.inscriptions.by_name) %>
+	<%= table_for_managed_stage(@inscriptions.by_name) %>
 
   <p>
     Download:
-    <%= link_to "CSV", managed_stage_path(format: "csv") %> 
+    <%= link_to "CSV", managed_stage_path(params.merge({format: "csv"})) %> 
   </p>
 	
 <% end %>

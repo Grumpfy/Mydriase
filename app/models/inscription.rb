@@ -6,6 +6,8 @@ class Inscription < ActiveRecord::Base
   belongs_to :atelier
   belongs_to :adherent
   scope :by_name, joins(:adherent).order("adherents.nom") 
+  scope :pending_conf1, where("conf1 = ? and conf2 = ?", false, false) 
+  scope :pending_conf2, where("conf1 = ? AND conf2 = ?", true, false) 
   has_many :billings, dependent: :destroy
   accepts_nested_attributes_for :billings
   attr_accessible :billings_attributes

@@ -11,19 +11,32 @@ class GestionController < ApplicationController
 
   def managed_stage  
     @managed_stage = current_stage
-    @inscriptions = current_stage.inscriptions.by_name
+
+    if params[:conf_level] and params[:conf_level] == "1"
+      @inscriptions = current_stage.inscriptions.pending_conf1.by_name
+      @filter_conf = :conf1
+      csv_base_name = "attente_conf1"
+    elsif params[:conf_level] and params[:conf_level] == "2" 
+      @inscriptions = current_stage.inscriptions.pending_conf2.by_name
+      @filter_conf = :conf2
+      csv_base_name = "attente_conf2"
+    else
+      @inscriptions = current_stage.inscriptions.by_name
+      @filter_conf = :none
+      csv_base_name = "inscriptions"
+    end
 
     respond_to do |format|
       format.html 
       format.json { render json: @managed_stage }
-      format.csv { export_csv(@inscriptions) }
+      format.csv { export_csv(@inscriptions, csv_base_name) }
     end
   end
 
 protected
 
-  def export_csv(inscriptions)
-    filename = "inscriptions_"+I18n.l(Time.now, :format => :short)
+  def export_csv(inscriptions, csv_base_name)
+    filename = csv_base_name+"_"+I18n.l(Time.now, :format => :short)
 
     content = CSV.generate do |csv|
       # header row
