@@ -48,7 +48,7 @@ protected
   def export_csv(inscriptions, csv_base_name)
     filename = csv_base_name+"_"+I18n.l(Time.now, :format => :short)
 
-    content = CSV.generate do |csv|
+    content = CSV.generate(:col_sep => "\t") do |csv|
       # header row
       csv << 
         ["Nom", "Prenom", "Atelier", 

@@ -17,7 +17,7 @@
 	<br/><br/>
 	<% if @inscriptions.size > 0%>
 	  <%= table_for_managed_stage(@inscriptions.by_name) %>
-	  T&eacute;l&eacute;charger: <%= link_to "CSV", managed_stage_path(params.merge({format: "csv"})) %> 
+	  T&eacute;l&eacute;charger: <%= link_to "TSV", managed_stage_path(params.merge({format: "csv"})) %> 
  
 
 	
