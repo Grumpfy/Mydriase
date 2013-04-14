@@ -40,10 +40,20 @@ protected
 
     content = CSV.generate do |csv|
       # header row
-      csv << ["Nom", "Prenom", "Atelier", "Mail", "Adresse", "Tel"]
+      csv << 
+        ["Nom", "Prenom", "Atelier", 
+         "Mail", 
+         "Adresse", "Ville", "Code Postal",
+         "Tel", "Portable",
+         "Confirmation 1", "Confirmation 2"]
       # data rows
       inscriptions.each do |inscription|
-        csv << [inscription.adherent.nom, inscription.adherent.prenom, inscription.atelier.title, ]
+        csv << 
+          [inscription.adherent.nom, inscription.adherent.prenom, inscription.atelier.title, 
+           inscription.adherent.mail, 
+           inscription.adherent.adresse, inscription.adherent.ville, inscription.adherent.code_postal,
+           inscription.adherent.tel, inscription.adherent.portable,
+           inscription.conf1, inscription.conf2]
       end
     end
 
