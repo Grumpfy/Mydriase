@@ -21,6 +21,7 @@ Mydriase::Application.routes.draw do
   controller :gestion do
     get 'overview' => :overview
     get 'managed_stage' => :managed_stage
+    post 'bulk_bump_confirmation_state' => :bulk_bump_confirmation_state
   end
 
   resources :stages

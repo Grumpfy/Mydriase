@@ -16,12 +16,17 @@
 
 	<br/><br/>
 	<%= table_for_managed_stage(@inscriptions.by_name) %>
+	T&eacute;l&eacute;charger: <%= link_to "CSV", managed_stage_path(params.merge({format: "csv"})) %> 
+ 
 
-  <p>
-    Download:
-    <%= link_to "CSV", managed_stage_path(params.merge({format: "csv"})) %> 
-  </p>
 	
+	<% if params[:conf_level]%>
+		<p>
+			<b>Action globale:</b>
+			<%= button_to "Valider les confirmations #{params[:conf_level]}", bulk_bump_confirmation_state_path(params), data: { confirm: "Valider toutes les confirmations #{params[:conf_level]} en attente?" }, class: "gestion_button" %>
+	  </p>
+	<% end %>
+			
 <% end %>
 
 

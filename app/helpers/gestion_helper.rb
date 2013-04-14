@@ -17,6 +17,4 @@ module GestionHelper
       })
   end
 
-  
-
 end

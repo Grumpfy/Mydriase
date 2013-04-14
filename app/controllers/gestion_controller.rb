@@ -33,6 +33,16 @@ class GestionController < ApplicationController
     end
   end
 
+  def bulk_bump_confirmation_state
+    if params[:conf_level] and params[:conf_level] == "1"
+      current_stage.inscriptions.pending_conf1.update_all(:conf1 => true)
+    elsif params[:conf_level] and params[:conf_level] == "2" 
+      current_stage.inscriptions.pending_conf2.update_all(:conf2 => true)
+    end
+
+    redirect_to managed_stage_url
+  end
+
 protected
 
   def export_csv(inscriptions, csv_base_name)
