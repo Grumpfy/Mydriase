@@ -10,6 +10,11 @@
   <b>Inscrits: </b><%= @managed_stage.inscriptions.count %>
 	<br/><br/>
 	<%= table_for_managed_stage(@managed_stage.inscriptions.by_name) %>
+
+  <p>
+    Download:
+    <%= link_to "CSV", managed_stage_path(format: "csv") %> 
+  </p>
 	
 <% end %>
 
