@@ -8,11 +8,9 @@
   <% end %>
 
   <b>Inscrits: </b><%= @managed_stage.inscriptions.count %>
-
-  <table>
-    <%= render partial: "inscriptions/inscription", collection: @managed_stage.inscriptions.by_name, locals: {mode: :gestion} %>
-  </table>
-
+	<br/><br/>
+	<%= table_for_managed_stage(@managed_stage.inscriptions.by_name) %>
+	
 <% end %>
 
 
