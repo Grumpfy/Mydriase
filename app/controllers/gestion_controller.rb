@@ -71,7 +71,7 @@ protected
 
     send_data content,
     :type => 'text/csv; charset=iso-8859-1; header=present',
-    :disposition => "attachment; filename=#{filename}.csv"
+    :disposition => "attachment; filename=#{filename}.txt"
 
   end
 
