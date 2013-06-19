@@ -1,5 +1,5 @@
 class OperationsController < ApplicationController
-  skip_before_filter :authorize_admin_only
+  skip_before_filter :authorize_admin_only, only: [:show, :index]
 
   # GET /operations
   # GET /operations.json

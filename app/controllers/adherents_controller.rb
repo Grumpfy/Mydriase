@@ -1,5 +1,5 @@
 class AdherentsController < ApplicationController
-  skip_before_filter :authorize_admin_only
+  skip_before_filter :authorize_admin_only, only: [:show, :index]
   # GET /adherents
   # GET /adherents.json
   def index

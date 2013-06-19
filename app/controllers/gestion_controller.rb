@@ -3,7 +3,7 @@ require 'iconv'
 
 class GestionController < ApplicationController
   skip_before_filter :authorize, :only => [:overview]
-  skip_before_filter :authorize_admin_only
+  skip_before_filter :authorize_admin_only, only: [:overview, :managed_stage]
 
   def overview
     @managed_stage = current_stage
