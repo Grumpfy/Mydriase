@@ -19,6 +19,14 @@ class InscriptionStatus
     "#{@inscription.adherent.nom} #{@inscription.adherent.prenom}"
   end
 
+  def adherent_first_name
+    "#{@inscription.adherent.prenom}"
+  end
+
+  def adherent_last_name
+    "#{@inscription.adherent.nom}"
+  end
+
   def stage_title
     "#{@inscription.stage.title}"
   end
@@ -96,6 +104,34 @@ class InscriptionStatus
     @inscription.billings.each {|b| solde -= b.price} 
     @inscription.operations.each {|o| solde += o.price} 
     solde 
+  end
+
+  def adherent_mail
+    "#{@inscription.adherent.mail}"
+  end
+
+  def adherent_full_address
+    "#{@inscription.adherent.adresse} #{@inscription.adherent.code_postal} #{@inscription.adherent.ville}"
+  end
+
+  def adherent_address
+    "#{@inscription.adherent.adresse}"
+  end
+
+  def adherent_city
+    "#{@inscription.adherent.ville}"
+  end
+
+  def adherent_postal
+    "#{@inscription.adherent.code_postal}"
+  end
+
+  def adherent_tel
+    "#{@inscription.adherent.tel}"
+  end
+
+  def adherent_mobile
+    "#{@inscription.adherent.portable}"
   end
 
   def to_s

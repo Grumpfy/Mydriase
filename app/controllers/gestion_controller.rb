@@ -55,22 +55,33 @@ protected
          "Mail", 
          "Adresse", "Ville", "Code Postal",
          "Tel", "Portable",
-         "Confirmation 1", "Confirmation 2"]
+         "Confirmation 1", "Confirmation 2", "Mineur", "Vegan",
+         "Remarque globale", "Remarque altelier", "Remarque alimentation", "Remarque hebergement",
+         "Chambre", "Solde"]
       # data rows
       inscriptions.each do |inscription|
+        i = InscriptionStatus.new(inscription, nil)
         csv << 
-          [inscription.adherent.nom, inscription.adherent.prenom, inscription.atelier.title, 
-           inscription.adherent.mail, 
-           inscription.adherent.adresse, inscription.adherent.ville, inscription.adherent.code_postal,
-           inscription.adherent.tel, inscription.adherent.portable,
-           inscription.conf1, inscription.conf2]
+          [i.adherent_last_name, i.adherent_first_name, i.atelier_title, 
+           i.adherent_mail, 
+           i.adherent_address, i.adherent_city, i.adherent_postal,
+           i.adherent_tel, i.adherent_mobile,
+           i.conf1, i.conf2, i.minor, i.vegetarian,
+           i.remarque(:global), i.remarque(:atelier), i.remarque(:food), i.remarque(:housing),
+           i.room, i.solde]
       end
     end
 
-    content = Iconv.conv('iso-8859-1//IGNORE', 'utf-8', content)
+    # encoding = 'iso-8859-1' 
+    # encoding = 'utf-16le' 
+    # bom = "\xFF\xFE"
+    encoding = 'utf-8' 
+    # bom = "\xEF\xBB\xBF"
+
+    content = Iconv.conv("#{encoding}//IGNORE", 'utf-8', content)
 
     send_data content,
-    :type => 'text/csv; charset=iso-8859-1; header=present',
+    :type => "text/csv; charset=#{encoding}; header=present",
     :disposition => "attachment; filename=#{filename}.txt"
 
   end
