@@ -8,7 +8,7 @@
   </thead>
   <tbody>
    <% simple_table.each do |record| %>
-     <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+     <tr data-search="<%= simple_table.tr_data(record) %>" class="<%= cycle('list_line_odd', 'list_line_even') %>">
        <% simple_table.values(record).each do |title, value| %>
          <td><%= value %></td>
        <% end %>

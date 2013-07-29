@@ -4,16 +4,21 @@ class SimpleTable
 
   delegate :each, to: :@records
   
-  def initialize(template, records, columns)
+  def initialize(template, records, columns, options = {})
     @template = template
     @records  = records
     @columns  = columns
+    @options = options
   end
 
   def values(record)
     @columns.each_with_object({}) do |(title, extractor), memo|
       memo[title] = extract_value(record, extractor)
     end
+  end
+
+  def tr_data(record)
+    extract_value(record, @options['data']).mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n,'').downcase.to_s
   end
 
   def to_s

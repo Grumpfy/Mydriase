@@ -16,10 +16,14 @@
 
 	<br/><br/>
 	<% if @inscriptions.size > 0%>
+	  <div id="search-form">
+			<b>Recherche:</b>
+		  <input id="search-field" type="text"/>
+	  </div> 
+		<br/>
+		
 	  <%= table_for_managed_stage(@inscriptions.by_name) %>
-	  T&eacute;l&eacute;charger: <%= link_to "TSV", managed_stage_path(params.merge({format: "csv"})) %> 
- 
-
+	  T&eacute;l&eacute;charger: <%= link_to "TSV", managed_stage_path(params.merge({format: "csv"})) %>  
 	
 	  <% if params[:conf_level]%>
 		  <p>
@@ -28,7 +32,7 @@
 	    </p>
 	  <% end %>
 	<% end %>
-			
+		
 <% end %>
 
 
