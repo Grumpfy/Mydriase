@@ -45,6 +45,10 @@ class GestionController < ApplicationController
 
 protected
 
+  def escape(s)
+    s.gsub("\r", "").gsub("\n", " / ")
+  end
+
   def export_csv(inscriptions, csv_base_name)
     filename = csv_base_name+"_"+I18n.l(Time.now, :format => :short)
 
@@ -56,7 +60,10 @@ protected
          "Adresse", "Ville", "Code Postal",
          "Tel", "Portable",
          "Confirmation 1", "Confirmation 2", "Mineur", "Vegan",
-         "Remarque globale", "Remarque altelier", "Remarque alimentation", "Remarque hebergement",
+         "Remarque globale", 
+         "Remarque altelier", 
+         "Remarque alimentation", 
+         "Remarque hebergement",
          "Chambre", "Solde"]
       # data rows
       inscriptions.each do |inscription|
@@ -64,10 +71,13 @@ protected
         csv << 
           [i.adherent_last_name, i.adherent_first_name, i.atelier_title, 
            i.adherent_mail, 
-           i.adherent_address, i.adherent_city, i.adherent_postal,
+           escape(i.adherent_address), i.adherent_city, i.adherent_postal,
            i.adherent_tel, i.adherent_mobile,
            i.conf1, i.conf2, i.minor, i.vegetarian,
-           i.remarque(:global), i.remarque(:atelier), i.remarque(:food), i.remarque(:housing),
+           escape(i.remarque(:global)), 
+           escape(i.remarque(:atelier)), 
+           escape(i.remarque(:food)), 
+           escape(i.remarque(:housing)),
            i.room, i.solde]
       end
     end
