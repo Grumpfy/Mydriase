@@ -7,6 +7,8 @@
     <%= time_tag @managed_stage.start %> - <%= time_tag @managed_stage.end%>
   <% end %>
 
+	<section id="listing">
+	
   <b>Inscrits: </b><%= @managed_stage.inscriptions.count %>
 	<br/>
 	<b>Filtres:</b>
@@ -17,8 +19,7 @@
 	<br/><br/>
 	<% if @inscriptions.size > 0%>
 	  <div id="search-form">
-			<b>Recherche:</b>
-		  <input id="search-field" type="text"/>
+		  <input id="search-field" type="text" autofocus placeholder="Recherche"/>
 	  </div> 
 		<br/>
 		
@@ -32,6 +33,13 @@
 	    </p>
 	  <% end %>
 	<% end %>
+
+	</section>
+	<section id="details">
+		<ul>
+			<li id="data" contenteditable ></li>
+		</ul>
+	</section>
 		
 <% end %>
 

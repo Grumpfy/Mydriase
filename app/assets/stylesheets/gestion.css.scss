@@ -49,3 +49,22 @@
         top:1px;
     }
 
+
+section#listing {
+  float: left;
+  width: 400px;
+}
+
+section#details {
+  float: right;
+	background-color: #ffff00;
+	padding: 50px;	
+  width: 500px;
+	ul {
+		 padding: 0px;
+		 margin: 0px;
+	}
+	li {
+    display: compact;
+	}
+}
