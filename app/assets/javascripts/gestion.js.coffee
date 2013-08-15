@@ -13,6 +13,3 @@ $(document).ready ->
       else 
         $(field).hide()
 
-$(document).ready ->
-  $('table tbody tr').click ->
-	  $('#data').html($(this).attr('data-search'))
