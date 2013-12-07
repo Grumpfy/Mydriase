@@ -7,7 +7,9 @@ class ApplicationController < ActionController::Base
   private
 
   def current_stage
-    Stage.all.last
+    stage = Stage.find(session[:stage_id]) if session[:stage_id] and session[:user_id]
+    stage ||= Stage.all.last
+    stage
   end
 
   def current_user
