@@ -24,6 +24,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    session[:stage_id] = nil
     session[:user_id] = nil
     redirect_to gestion_url, notice: "Logged out"
   end

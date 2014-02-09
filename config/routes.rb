@@ -24,7 +24,11 @@ Mydriase::Application.routes.draw do
     post 'bulk_bump_confirmation_state' => :bulk_bump_confirmation_state
   end
 
-  resources :stages
+  resources :stages do
+    member do 
+      get 'select'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -11,6 +11,7 @@
     <td class="list_actions"><%= link_to 'Show', stage %></td>
     <td class="list_actions"><%= link_to 'Edit', edit_stage_path(stage) %></td>
     <td class="list_actions"><%= link_to 'Destroy', stage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td class="list_actions"><%= link_to 'Select', select_stage_path(stage) %></td>
   </tr>
 <% end %>
 </table>

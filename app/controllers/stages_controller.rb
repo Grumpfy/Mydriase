@@ -1,5 +1,5 @@
 class StagesController < ApplicationController
-  skip_before_filter :authorize_admin_only, only: [:show, :index]
+  skip_before_filter :authorize_admin_only, only: [:show, :index, :select]
 
   # GET /stages
   # GET /stages.json
@@ -16,7 +16,6 @@ class StagesController < ApplicationController
   # GET /stages/1.json
   def show
     @stage = Stage.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @stage }
@@ -37,6 +36,15 @@ class StagesController < ApplicationController
   # GET /stages/1/edit
   def edit
     @stage = Stage.find(params[:id])
+  end
+
+  # GET /stages/1/select
+  def select
+    @stage = Stage.find(params[:id])
+    if @stage
+      session[:stage_id] = params[:id]
+    end
+    redirect_to '/'
   end
 
   # POST /stages
