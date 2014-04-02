@@ -3,7 +3,8 @@ class Atelier < ActiveRecord::Base
   belongs_to :stage
   has_many :inscriptions
   validates :stage_id, :title, presence: true
-  validates :title, uniqueness: true
+  validates :title, uniqueness: { scope: :stage_id, 
+    message: "Les ateliers doivent avoir un nom unique" }
   before_destroy :ensure_not_referenced_by_any_inscription
   default_scope order(:title)
 
