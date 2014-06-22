@@ -42,6 +42,8 @@ class InscriptionStatus
       not @inscription.food_notes.strip.empty?
     elsif section == :housing
       not @inscription.housing_notes.strip.empty?
+    elsif section == :adherent
+      not @inscription.adherent.remarques.empty?
     else 
       not @inscription.remarques.strip.empty?
     end
@@ -54,6 +56,8 @@ class InscriptionStatus
       @inscription.food_notes
     elsif section == :housing
       @inscription.housing_notes
+    elsif section == :adherent
+      @inscription.adherent.remarques
     else 
       @inscription.remarques
     end

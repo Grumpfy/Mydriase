@@ -63,6 +63,7 @@ protected
          "Remarque globale", 
          "Remarque altelier", 
          "Remarque alimentation", 
+         "Remarque adherent",
          "Remarque hebergement",
          "Chambre", "Solde"]
       # data rows
@@ -77,6 +78,7 @@ protected
            escape(i.remarque(:global)), 
            escape(i.remarque(:atelier)), 
            escape(i.remarque(:food)), 
+           escape(i.remarque(:adherent)),
            escape(i.remarque(:housing)),
            i.room, i.solde]
       end
