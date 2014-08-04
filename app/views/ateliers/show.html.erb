@@ -5,10 +5,10 @@
 <%= link_to 'Edit', edit_atelier_path(@atelier) %> 
 
 <p>
-	<b>Inscrits: </b><%= @atelier.stage.inscriptions.count %>
+	<b>Inscrits: </b><%= @atelier.stage.inscriptions.visible.count %>
 
 	<table>
-		<% @atelier.inscriptions.by_name.each do |inscription| %>
+		<% @atelier.inscriptions.visible.by_name.each do |inscription| %>
 		<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
 			<td>
 				<%= "#{inscription.adherent.nom} #{inscription.adherent.prenom}" %>

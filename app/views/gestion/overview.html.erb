@@ -12,7 +12,7 @@
   <% @managed_stage.ateliers.each do |atelier| %>
     <article class="atelier">
       <header>
-        <b><%= "#{atelier.title}, #{pluralize(atelier.inscriptions.count, 'inscrit')}:" %></b>
+        <b><%= "#{atelier.title}, #{pluralize(atelier.inscriptions.visible.count, 'inscrit')}:" %></b>
       </header>
       <p>
         <table>

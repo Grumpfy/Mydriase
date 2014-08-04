@@ -9,7 +9,7 @@
 
 	<section id="listing">
 	
-  <b>Inscrits: </b><%= @managed_stage.inscriptions.count %>
+  <b>Inscrits: </b><%= @managed_stage.inscriptions.visible.count %>
 	<br/>
 	<b>Filtres:</b>
 	<%= link_to "aucun", managed_stage_path() %> |
