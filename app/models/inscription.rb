@@ -1,5 +1,5 @@
 class Inscription < ActiveRecord::Base
-  attr_accessible :adherent_id, :atelier_id, :atelier_notes, :remarques, :stage_id, :minor, :room, :housing_notes, :vegetarian, :food_notes, :conf1, :conf2, :bill_requested, :bill_delivered
+  attr_accessible :adherent_id, :atelier_id, :atelier_notes, :remarques, :stage_id, :minor, :room, :housing_notes, :vegetarian, :food_notes, :conf1, :conf2, :bill_requested, :bill_delivered, :hidden
   validates :stage_id, :atelier_id, :adherent_id, presence: true
   validate :stage_and_atelier_match
   belongs_to :stage
@@ -7,7 +7,9 @@ class Inscription < ActiveRecord::Base
   belongs_to :adherent
   scope :by_name, joins(:adherent).order("adherents.nom") 
   scope :pending_conf1, where("conf1 = ? and conf2 = ?", false, false) 
-  scope :pending_conf2, where("conf1 = ? AND conf2 = ?", true, false) 
+  scope :pending_conf2, where("conf1 = ? AND conf2 = ?", true, false)
+  scope :hidden, where(:hidden => true)
+  scope :visible, where(:hidden => false)
   has_many :billings, dependent: :destroy
   accepts_nested_attributes_for :billings
   attr_accessible :billings_attributes

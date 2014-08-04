@@ -12,17 +12,17 @@ class GestionController < ApplicationController
   def managed_stage  
     @managed_stage = current_stage
 
-    if params[:conf_level] and params[:conf_level] == "1"
-      @inscriptions = current_stage.inscriptions.pending_conf1.by_name
-      @filter_conf = :conf1
+    if params[:filter] and params[:filter] == "conf1"
+      @inscriptions = current_stage.inscriptions.pending_conf1.visible.by_name
       csv_base_name = "attente_conf1"
-    elsif params[:conf_level] and params[:conf_level] == "2" 
-      @inscriptions = current_stage.inscriptions.pending_conf2.by_name
-      @filter_conf = :conf2
+    elsif params[:filter] and params[:filter] == "conf2" 
+      @inscriptions = current_stage.inscriptions.pending_conf2.visible.by_name
       csv_base_name = "attente_conf2"
+    elsif params[:filter] and params[:filter] == "hidden" 
+      @inscriptions = current_stage.inscriptions.hidden.by_name
+      csv_base_name = "hidden"
     else
-      @inscriptions = current_stage.inscriptions.by_name
-      @filter_conf = :none
+      @inscriptions = current_stage.inscriptions.visible.by_name
       csv_base_name = "inscriptions"
     end
 
@@ -34,9 +34,9 @@ class GestionController < ApplicationController
   end
 
   def bulk_bump_confirmation_state
-    if params[:conf_level] and params[:conf_level] == "1"
+    if params[:filter] and params[:filter] == "conf1"
       current_stage.inscriptions.pending_conf1.update_all(:conf1 => true)
-    elsif params[:conf_level] and params[:conf_level] == "2" 
+    elsif params[:filter] and params[:filter] == "conf2" 
       current_stage.inscriptions.pending_conf2.update_all(:conf2 => true)
     end
 

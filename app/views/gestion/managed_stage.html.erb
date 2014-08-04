@@ -13,8 +13,9 @@
 	<br/>
 	<b>Filtres:</b>
 	<%= link_to "aucun", managed_stage_path() %> |
-	<%= link_to "attente confirmation 1", managed_stage_path(:conf_level => 1) %> |
-	<%= link_to "attente confirmation 2", managed_stage_path(:conf_level => 2) %> 
+	<%= link_to "attente confirmation 1", managed_stage_path(:filter => "conf1") %> |
+	<%= link_to "attente confirmation 2", managed_stage_path(:filter => "conf2") %> |
+	<%= link_to "cach&eacute;".html_safe, managed_stage_path(:filter => "hidden") %> 
 
 	<br/><br/>
 	<% if @inscriptions.size > 0%>
@@ -26,10 +27,10 @@
 	  <%= table_for_managed_stage(@inscriptions.by_name) %>
 	  T&eacute;l&eacute;charger: <%= link_to "TSV", managed_stage_path(params.merge({format: "csv"})) %>  
 	
-	  <% if params[:conf_level]%>
+	  <% if params[:filter] and (params[:filter] == "conf1" or params[:filter] == "conf2") %>
 		  <p>
 			  <b>Action globale:</b>
-			  <%= button_to "Valider les confirmations #{params[:conf_level]}", bulk_bump_confirmation_state_path(params), data: { confirm: "Valider toutes les confirmations #{params[:conf_level]} en attente?" }, class: "gestion_button" %>
+			  <%= button_to "Valider les confirmations #{params[:filter][-1,1]}", bulk_bump_confirmation_state_path(params), data: { confirm: "Valider toutes les confirmations #{params[:filter][-1,1]} en attente?" }, class: "gestion_button" %>
 	    </p>
 	  <% end %>
 	<% end %>

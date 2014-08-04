@@ -108,6 +108,15 @@
 					<td colspan=2><hr /></td>
 				</tr>           
 
+				<tr>
+					<td><%= f.label :hidden, "Cacher cette inscription:".html_safe %></td>
+					<td><%= f.check_box :hidden %></td>
+				</tr>
+				
+				<tr>
+					<td colspan=2><hr /></td>
+				</tr>           
+				
 				<% if mode == :create %>
 					
 					<%= f.fields_for(:billings) do |b| %>

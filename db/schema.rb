@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121216204730) do
+ActiveRecord::Schema.define(:version => 20140804194556) do
 
   create_table "adherents", :force => true do |t|
     t.string   "nom"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20121216204730) do
     t.boolean  "conf2",          :default => false
     t.boolean  "bill_requested", :default => false
     t.boolean  "bill_delivered", :default => false
+    t.boolean  "hidden",         :default => false
   end
 
   create_table "operations", :force => true do |t|
