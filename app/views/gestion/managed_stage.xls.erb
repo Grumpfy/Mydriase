@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workbook
+	xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+	xmlns:o="urn:schemas-microsoft-com:office:office"
+	xmlns:x="urn:schemas-microsoft-com:office:excel"
+	xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+	xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Inscriptions">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Nom</Data></Cell>
+        <Cell><Data ss:Type="String">Prenom</Data></Cell>
+        <Cell><Data ss:Type="String">Atelier</Data></Cell>
+        <Cell><Data ss:Type="String">Mail</Data></Cell>
+        <Cell><Data ss:Type="String">Adresse</Data></Cell>
+        <Cell><Data ss:Type="String">Ville</Data></Cell>
+        <Cell><Data ss:Type="String">Code Postal</Data></Cell>
+        <Cell><Data ss:Type="String">Tel</Data></Cell>
+        <Cell><Data ss:Type="String">Portable</Data></Cell>
+        <Cell><Data ss:Type="String">Confirmation 1</Data></Cell>
+        <Cell><Data ss:Type="String">Confirmation 2</Data></Cell>
+        <Cell><Data ss:Type="String">Mineur</Data></Cell>
+        <Cell><Data ss:Type="String">Vegan</Data></Cell>
+        <Cell><Data ss:Type="String">Remarque globale</Data></Cell>
+        <Cell><Data ss:Type="String">Remarque altelier</Data></Cell>
+        <Cell><Data ss:Type="String">Remarque alimentation</Data></Cell>
+        <Cell><Data ss:Type="String">Remarque adherent</Data></Cell>
+        <Cell><Data ss:Type="String">Remarque hebergement</Data></Cell>
+        <Cell><Data ss:Type="String">Chambre</Data></Cell>
+        <Cell><Data ss:Type="String">Solde</Data></Cell>
+      </Row>
+			<% @inscriptions.each do |inscription| %>
+				<% i = InscriptionStatus.new(inscription, nil) %>
+				<Row>
+					<Cell><Data ss:Type="String"><%= i.adherent_last_name %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= i.adherent_first_name %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= i.atelier_title %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= i.adherent_mail %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= i.adherent_address %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= i.adherent_city %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= i.adherent_postal %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= i.adherent_tel %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= i.adherent_mobile %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= i.conf1 %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= i.conf2 %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= i.minor %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= i.vegetarian %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= i.remarque(:global) %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= i.remarque(:atelier) %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= i.remarque(:food) %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= i.remarque(:adherent) %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= i.remarque(:housing) %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= i.room %></Data></Cell>
+					<Cell><Data ss:Type="String"><%= i.solde %></Data></Cell>
+				</Row>
+			<% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
+
+
+

@@ -24,7 +24,9 @@
 		<br/>
 		
 	  <%= table_for_managed_stage(@inscriptions.by_name) %>
-	  T&eacute;l&eacute;charger: <%= link_to "TSV", managed_stage_path(params.merge({format: "csv"})) %>  
+	  T&eacute;l&eacute;charger:
+		<%= link_to "TSV", managed_stage_path(params.merge({format: "csv"})) %>  
+		<%= link_to "XLS", managed_stage_path(params.merge({format: "xls"})) %>  
 	
 	  <% if params[:conf_level]%>
 		  <p>
