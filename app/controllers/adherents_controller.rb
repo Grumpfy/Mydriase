@@ -19,6 +19,7 @@ class AdherentsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+      format.js
       format.json { render json: @adherent }
     end
   end

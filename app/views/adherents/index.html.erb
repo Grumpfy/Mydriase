@@ -4,19 +4,21 @@
   Adh&eacute;rents
 <% end %>
 
-<table>
+<section id="listing">
 
-<% @adherents.each do |adherent| %>
-  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-    <td><b><%= "#{adherent.nom} #{adherent.prenom}" %></b></td>
-    <td><%= adherent.ville %></td>
-    <td class="list_actions"><%= link_to 'Show', adherent %></td>
-    <td class="list_actions"><%= link_to 'Edit', edit_adherent_path(adherent) %></td>
-    <td class="list_actions"><%= link_to 'Destroy', adherent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+	<div id="search-form">
+		<input id="search-field" type="text" autofocus placeholder="Recherche"/>
+	</div> 
+	<br/>
 
-<br />
+	<%= table_for_adherents(@adherents) %>
 
-<%= link_to "Nouvel adherent", new_adherent_path %>
+	<br />
+
+	<%= link_to "Nouvel adherent", new_adherent_path %>
+
+</section>
+	
+<section id="details">
+	<div id="adherent_details"></div> 
+</section>

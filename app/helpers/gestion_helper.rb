@@ -11,10 +11,10 @@ module GestionHelper
        },
        'Atelier' => ->(inscription) {
          inscription.atelier.title
-       },
-       'Actions' => ->(inscription) {
-         link_to('Edit', edit_inscription_path(inscription))
-       }
+       }# ,
+       # '_Edit' => ->(inscription) {
+       #   link_to('Edit', edit_inscription_path(inscription))
+       # }
      },
      {
        'data' => ->(inscription) {

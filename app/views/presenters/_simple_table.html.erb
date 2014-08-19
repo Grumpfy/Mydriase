@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <% simple_table.columns.each_key do |title| %>
-        <th><%= title %></th>
+        <th><%= title if not title.start_with?("_") %></th>
       <% end %>
     </tr>
   </thead>

@@ -6,8 +6,6 @@
   <% content_for :subtitle do %>
     <%= time_tag @managed_stage.start %> - <%= time_tag @managed_stage.end%>
   <% end %>
-
-	<section id="listing">
 	
   <b>Inscrits: </b><%= @managed_stage.inscriptions.visible.count %>
 	<br/>
@@ -18,6 +16,9 @@
 	<%= link_to "cach&eacute;".html_safe, managed_stage_path(:filter => "hidden") %> 
 
 	<br/><br/>
+
+	<section id="listing">
+	
 	<% if @inscriptions.size > 0%>
 	  <div id="search-form">
 		  <input id="search-field" type="text" autofocus placeholder="Recherche"/>
