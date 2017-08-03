@@ -26,11 +26,13 @@ class GestionController < ApplicationController
       csv_base_name = "inscriptions"
     end
 
+    filename = csv_base_name+"_"+I18n.l(Time.now, :format => :short)
+
     respond_to do |format|
       format.html 
       format.json { render json: @managed_stage }
-      format.csv { export_csv(@inscriptions, csv_base_name) }
-      format.xls
+      format.csv { export_csv(@inscriptions, filename) }
+      format.xls { headers["Content-Disposition"] = "attachment; filename=\"#{filename}\"" }
     end
   end
 
@@ -50,9 +52,7 @@ protected
     s.gsub("\r", "").gsub("\n", " / ")
   end
 
-  def export_csv(inscriptions, csv_base_name)
-    filename = csv_base_name+"_"+I18n.l(Time.now, :format => :short)
-
+  def export_csv(inscriptions, filename)
     content = CSV.generate(:col_sep => "\t") do |csv|
       # header row
       csv << 
