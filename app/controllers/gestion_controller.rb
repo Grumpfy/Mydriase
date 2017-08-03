@@ -30,6 +30,7 @@ class GestionController < ApplicationController
       format.html 
       format.json { render json: @managed_stage }
       format.csv { export_csv(@inscriptions, csv_base_name) }
+      format.xls
     end
   end
 
